@@ -1,14 +1,20 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import Navbar from "../components/Navbar";
+import NavbarComp from "../components/NavbarComp";
 import Sidebar from "../components/Sidebar";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const Layout = ({ children }) => {
   return (
-    <Container>
-      <Navbar />
-      <Container>{children}</Container>
-      <Sidebar />
+    <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
+      <NavbarComp />
+      <Row>
+        <Col sm={3}>
+          <Sidebar />
+        </Col>
+        <Col sm={9}>{children}</Col>
+      </Row>
     </Container>
   );
 };
