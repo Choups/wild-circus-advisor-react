@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import SignupForm from "./pages/SignupForm";
 import Layout from "./layouts/general";
+import Circus from "./pages/Circus";
 
 const App = () => {
   const [datas, setdatas] = useState();
@@ -30,6 +31,11 @@ const App = () => {
             <Route path="/dashboard">
               <Layout>
                 <Dashboard />
+              </Layout>
+            </Route>
+            <Route path="/circus/:idcircus">
+              <Layout>
+                <Circus />
               </Layout>
             </Route>
             <Route path="/profile">

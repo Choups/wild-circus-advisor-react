@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   return (
     <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
       <NavbarComp />
-      <Row>
+      <Row noGutters>
         <Col sm={3}>
           <Sidebar />
         </Col>

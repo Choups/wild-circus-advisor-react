@@ -8,7 +8,7 @@ import logo from "../logo.svg";
 
 const NavbarComp = () => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar fixed="top" bg="light" expand="lg">
       <Navbar.Brand href="#home">
         <img
           alt=""
