@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import SignupForm from "./pages/SignupForm";
+import Layout from "./layouts/general";
 
 const App = () => {
   const [datas, setdatas] = useState();
@@ -26,9 +27,21 @@ const App = () => {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/form" component={SignupForm} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/404" component={NotFound} />
+            <Route path="/dashboard">
+              <Layout>
+                <Dashboard />
+              </Layout>
+            </Route>
+            <Route path="/profile">
+              <Layout>
+                <Profile />
+              </Layout>
+            </Route>
+            <Route path="/404">
+              <Layout>
+                <NotFound />
+              </Layout>
+            </Route>
             <Redirect to="/404" />
           </Switch>
         </BrowserRouter>
