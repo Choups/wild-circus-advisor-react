@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -12,9 +13,14 @@ const SignupForm = props => {
   };
 
   return (
-    <Container>
-      <h2>Vos informations</h2>
-      <Form onSubmit={handleSubmit}>
+    <Container className="fluid d-flex flex-column justify-content-around fullHeight">
+      <Row className="d-flex justify-content-center">
+        <h2>Vos informations</h2>
+      </Row>
+      <Form
+        onSubmit={handleSubmit}
+        className="fluid d-flex flex-column justify-content-center"
+      >
         <Form.Row>
           <Form.Group as={Col} controlId="formGridLastName">
             <Form.Label>Nom</Form.Label>
@@ -49,13 +55,14 @@ const SignupForm = props => {
             />
           </Form.Group>
         </Form.Row>
-
-        <Link to="/signup">
-          <Button variant="primary">Retour</Button>
-        </Link>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <Form.Row>
+          <Link to="/signup">
+            <Button variant="primary">Retour</Button>
+          </Link>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form.Row>
       </Form>
     </Container>
   );

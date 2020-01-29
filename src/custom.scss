@@ -4,5 +4,9 @@
 .wrapper {
   padding-top: 80px;
 }
+
+.fullHeight {
+  min-height: 100vh;
+}
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";

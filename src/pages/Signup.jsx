@@ -8,21 +8,19 @@ import { Link } from "react-router-dom";
 
 const Signup = () => {
   return (
-    <Container fluid>
-      <Row>
-        <h2 style={{ textAlign: "center", margin: "10% auto" }}>
-          Êtes-vous un futur client ou un professionnel du cirque ?
-        </h2>
+    <Container className="fluid d-flex flex-column justify-content-around fullHeight">
+      <Row className="d-flex justify-content-center">
+        <h2>Êtes-vous un futur client ou un professionnel du cirque ?</h2>
       </Row>
-      <Row>
-        <CardDeck style={{ margin: "auto" }}>
+      <Row className="d-flex justify-content-center">
+        <CardDeck>
           <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src="holder.js/100px180" />
             <Card.Body>
               <Card.Title>Futur client</Card.Title>
               <Card.Text>
-                Je souhaite consulter la liste des spectacles et acheter des
-                tickets.
+                Je souhaite consulter la liste des spectacles et réserver ma/mes
+                place(s).
               </Card.Text>
               <Link to="/form?compte=standard">
                 <Button variant="primary">Compte standard</Button>
