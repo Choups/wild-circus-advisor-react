@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import SignupForm from "./pages/SignupForm";
 import Layout from "./layouts/general";
 import Circus from "./pages/Circus";
+import Cart from "./pages/Cart";
 
 const App = () => {
   const [datas, setdatas] = useState();
@@ -41,6 +42,11 @@ const App = () => {
             <Route path="/profile">
               <Layout>
                 <Profile />
+              </Layout>
+            </Route>
+            <Route path="/cart">
+              <Layout>
+                <Cart />
               </Layout>
             </Route>
             <Route path="/404">

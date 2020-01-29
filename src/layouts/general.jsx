@@ -10,10 +10,12 @@ const Layout = ({ children }) => {
     <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
       <NavbarComp />
       <Row noGutters>
-        <Col sm={3}>
+        <Col sm={3} style={{ paddingTop: "80px" }}>
           <Sidebar />
         </Col>
-        <Col sm={9}>{children}</Col>
+        <Col sm={9} style={{ paddingTop: "80px" }}>
+          {children}
+        </Col>
       </Row>
     </Container>
   );

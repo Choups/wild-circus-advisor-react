@@ -3,12 +3,16 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
 import logo from "../logo.svg";
 
 const NavbarComp = () => {
   return (
-    <Navbar fixed="top" bg="light" expand="lg">
+    <Navbar
+      fixed="top"
+      bg="light"
+      expand="lg"
+      style={{ marginBottom: "200px" }}
+    >
       <Navbar.Brand href="#home">
         <img
           alt=""
@@ -27,8 +31,11 @@ const NavbarComp = () => {
           <Nav.Link href="#link">Panier</Nav.Link>
         </Nav>
         <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-success">Search</Button>
+          <FormControl
+            type="text"
+            placeholder="Rechercher"
+            className="mr-sm-2"
+          />
         </Form>
         <Nav>
           <Nav.Link href="#link">Déconnexion</Nav.Link>

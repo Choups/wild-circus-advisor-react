@@ -1,17 +1,21 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import CardDeck from "react-bootstrap/CardDeck";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
   return (
-    <Container>
-      <h2>Êtes-vous un futur client ou un professionnel du cirque ?</h2>
+    <Container fluid>
       <Row>
-        <Col>
+        <h2 style={{ textAlign: "center", margin: "10% auto" }}>
+          Êtes-vous un futur client ou un professionnel du cirque ?
+        </h2>
+      </Row>
+      <Row>
+        <CardDeck style={{ margin: "auto" }}>
           <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src="holder.js/100px180" />
             <Card.Body>
@@ -25,8 +29,7 @@ const Signup = () => {
               </Link>
             </Card.Body>
           </Card>
-        </Col>
-        <Col>
+
           <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src="holder.js/100px180" />
             <Card.Body>
@@ -40,7 +43,7 @@ const Signup = () => {
               </Link>
             </Card.Body>
           </Card>
-        </Col>
+        </CardDeck>
       </Row>
     </Container>
   );
