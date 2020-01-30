@@ -11,6 +11,7 @@ import SignupForm from "./pages/SignupForm";
 import Circus from "./pages/Circus";
 import Cart from "./pages/Cart";
 import History from "./pages/History";
+import Reviews from "./pages/Reviews";
 
 const App = () => {
   const [connectedUser, setConnectedUser] = useState();
@@ -46,6 +47,7 @@ const App = () => {
             <Route path="/profile" component={Profile} />
             <Route path="/cart" component={Cart} />
             <Route path="/history" component={History} />
+            <Route path="/reviews" component={Reviews} />
             <Route path="/404" component={NotFound} />
             <Redirect to="/404" />
           </Switch>

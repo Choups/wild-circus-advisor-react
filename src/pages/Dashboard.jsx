@@ -58,6 +58,12 @@ const Dashboard = () => {
                 >
                   <Button variant="primary">Réserver</Button>
                 </Link>
+                <Link
+                  to="/reviews"
+                  onClick={() => setCircusSelected(circus.idcircus)}
+                >
+                  <Button variant="primary">Lire les avis</Button>
+                </Link>
               </Card.Body>
             </Card>
           ))}
