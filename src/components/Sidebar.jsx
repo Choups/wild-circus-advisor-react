@@ -34,11 +34,39 @@ const Sidebar = ({ parent }) => {
             <Card.Header className="d-flex justify-content-between align-items-center">
               <div>{review.name}</div>
               <div>
-                <IoIosHeart />
-                <IoIosHeart />
-                <IoIosHeart />
-                <IoIosHeart />
-                <IoIosHeart />
+                {review.note === "Excellent" ? (
+                  <span>
+                    <IoIosHeart />
+                    <IoIosHeart />
+                    <IoIosHeart />
+                    <IoIosHeart />
+                    <IoIosHeart />
+                  </span>
+                ) : "Génial" ? (
+                  <span>
+                    <IoIosHeart />
+                    <IoIosHeart />
+                    <IoIosHeart />
+                    <IoIosHeart />
+                  </span>
+                ) : "Sympa" ? (
+                  <span>
+                    <IoIosHeart />
+                    <IoIosHeart />
+                    <IoIosHeart />
+                  </span>
+                ) : "Pas mal" ? (
+                  <span>
+                    <IoIosHeart />
+                    <IoIosHeart />
+                  </span>
+                ) : "Bof" ? (
+                  <span>
+                    <IoIosHeart />
+                  </span>
+                ) : (
+                  ""
+                )}
               </div>
               <img
                 src={review.image}
