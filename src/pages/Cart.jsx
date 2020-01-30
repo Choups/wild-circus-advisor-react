@@ -5,14 +5,35 @@ import Button from "react-bootstrap/Button";
 import Layout from "../layouts/general";
 import Context from "../context/";
 import Form from "react-bootstrap/Form";
+import axios from "axios";
 
 const Cart = () => {
-  const { cart, setCart } = useContext(Context);
+  const { cart, setCart, connectedUser } = useContext(Context);
+
   if (cart) {
     const arrayOfProducts = Object.keys(cart).map(key => cart[key]);
     const subTotal = arrayOfProducts
       .map(item => item.price * item.quantity)
       .reduce((a, b) => a + b);
+
+    const buy = () => {
+      arrayOfProducts.forEach(
+        product =>
+          axios
+            .post("/api/history/new", {
+              event_idevent: product.idevent,
+              quantity: product.quantity,
+              user_iduser: connectedUser
+            })
+            .then(res => res.data)
+            .catch(function(error) {
+              console.log(error);
+            })
+        // .finally(function() {
+        //   props.history.push("/dashboard");
+        // });
+      );
+    };
 
     return (
       <Layout child="cart">
@@ -88,7 +109,7 @@ const Cart = () => {
               </tr>
             </tbody>
           </Table>
-          <Button>Valider le paiement</Button>
+          <Button onClick={() => buy()}>Valider le paiement</Button>
         </Container>
       </Layout>
     );

@@ -10,12 +10,14 @@ import NotFound from "./pages/NotFound";
 import SignupForm from "./pages/SignupForm";
 import Circus from "./pages/Circus";
 import Cart from "./pages/Cart";
+import History from "./pages/History";
 
 const App = () => {
   const [connectedUser, setConnectedUser] = useState();
   const [circusList, setCircusList] = useState();
   const [circusSelected, setCircusSelected] = useState();
   const [cart, setCart] = useState();
+  const [history, setHistory] = useState();
 
   return (
     <div>
@@ -28,7 +30,9 @@ const App = () => {
           circusSelected,
           setCircusSelected,
           cart,
-          setCart
+          setCart,
+          history,
+          setHistory
         }}
       >
         <BrowserRouter>
@@ -41,6 +45,7 @@ const App = () => {
             <Route path="/circus" component={Circus} />
             <Route path="/profile" component={Profile} />
             <Route path="/cart" component={Cart} />
+            <Route path="/history" component={History} />
             <Route path="/404" component={NotFound} />
             <Redirect to="/404" />
           </Switch>
