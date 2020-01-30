@@ -1,37 +1,71 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { IoIosHeart } from "react-icons/io";
+import axios from "axios";
 
 const Sidebar = ({ parent }) => {
-  return (
-    <Container>
-      <Card>
-        <Card.Header>
-          Cirque 1 - <IoIosHeart />
-          <IoIosHeart />
-          <IoIosHeart />
-          <IoIosHeart />
-          <IoIosHeart />
-          <img
-            src={
-              "http://www.petit-bulletin.fr/multimedia/articles/2019-10-22-14-47-47_RESIZErsz1dsc1918editedit960x500.jpg"
-            }
-          />
-        </Card.Header>
-        <Card.Body>
-          <blockquote className="blockquote mb-0">
-            <p>Trop cool jadore lol bref tg</p>
-            <footer className="blockquote-footer">
-              <cite>le 20/05/2012 à Bordeaux par Alex Peyichout</cite>
-            </footer>
-          </blockquote>
-        </Card.Body>
-      </Card>
-    </Container>
-  );
+  const [dataList, setDataList] = useState();
+
+  //FETCH REVIEWS FROM SELECTED CIRCUS
+  useEffect(() => {
+    axios
+      .get(`/api/reviews`)
+      .then(function(response) {
+        // handle success
+        setDataList(response.data);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (dataList) {
+    return (
+      <Container
+        className="scrollhide"
+        style={{ maxHeight: "90vh", overflow: "auto" }}
+      >
+        {dataList.map(review => (
+          <Card style={{ marginBottom: "20px" }}>
+            <Card.Header className="d-flex justify-content-between align-items-center">
+              <div>{review.name}</div>
+              <div>
+                <IoIosHeart />
+                <IoIosHeart />
+                <IoIosHeart />
+                <IoIosHeart />
+                <IoIosHeart />
+              </div>
+              <img
+                src={review.image}
+                alt={review.name}
+                style={{ height: "35px", borderRadius: "10px" }}
+              />
+            </Card.Header>
+            <Card.Body>
+              <blockquote className="blockquote mb-0">
+                <p>{review.review}</p>
+                <footer className="blockquote-footer">
+                  <cite>
+                    le {review.date} à {review.city} par{" "}
+                    <span style={{ fontWeight: "bold" }}>
+                      {review.firstname} {review.lastname}
+                    </span>
+                  </cite>
+                </footer>
+              </blockquote>
+            </Card.Body>
+          </Card>
+        ))}
+      </Container>
+    );
+  } else {
+    return <div></div>;
+  }
 };
 
 export default Sidebar;

@@ -5,6 +5,7 @@ import "./custom.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import YoutubeBackground from "react-youtube-background";
+import { RemoveScrollBar } from "react-remove-scroll-bar";
 
 ReactDOM.render(
   <YoutubeBackground
@@ -12,6 +13,7 @@ ReactDOM.render(
     overlay={"rgba(0,0,0,0.5)"}
     className="fullHeight"
   >
+    <RemoveScrollBar />
     <App />
   </YoutubeBackground>,
   document.getElementById("root")

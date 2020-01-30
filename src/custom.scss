@@ -4,5 +4,11 @@
 .fullHeight {
   min-height: 100vh;
 }
+.scrollhide {
+  scrollbar-width: none;
+}
+.scrollhide::-webkit-scrollbar {
+  display: none;
+}
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
