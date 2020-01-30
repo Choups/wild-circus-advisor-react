@@ -22,7 +22,7 @@ const Signup = () => {
                 Je souhaite consulter la liste des spectacles et réserver ma/mes
                 place(s).
               </Card.Text>
-              <Link to="/form?compte=standard">
+              <Link to="/form/standard">
                 <Button variant="primary">Compte standard</Button>
               </Link>
             </Card.Body>
@@ -36,7 +36,7 @@ const Signup = () => {
                 Je souhaite référencer mon cirque afin de gérer mes prochains
                 spectacles.
               </Card.Text>
-              <Link to="/form?compte=pro">
+              <Link to="/form/pro">
                 <Button variant="primary">Compte pro</Button>
               </Link>
             </Card.Body>

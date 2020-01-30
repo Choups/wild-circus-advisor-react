@@ -3,7 +3,8 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const Sidebar = () => {
+const Sidebar = ({ parent }) => {
+  console.log("bla," + parent);
   return (
     <Container>
       {/* section filtes */}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -7,9 +7,33 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 const SignupForm = props => {
-  // methods
-  const handleSubmit = () => {
-    props.history.push("/login");
+  const formLevel =
+    (props.match.params.level === "standard" && 1) ||
+    (props.match.params.level === "pro" && 2);
+  const [info, setInfo] = useState({
+    email: "",
+    password: "",
+    firstname: "",
+    lastname: "",
+    level: formLevel
+  });
+
+  const updateForm = e => {
+    setInfo({ ...info, [e.target.name]: e.target.value });
+  };
+
+  const submitForm = e => {
+    e.preventDefault();
+    fetch("/api/user/new", {
+      method: "POST",
+      headers: new Headers({
+        "Content-Type": "application/json"
+      }),
+      body: JSON.stringify(info)
+    }).then(res => res.json());
+    setTimeout(() => {
+      props.history.push("/login");
+    }, 1000);
   };
 
   return (
@@ -18,30 +42,45 @@ const SignupForm = props => {
         <h2>Vos informations</h2>
       </Row>
       <Form
-        onSubmit={handleSubmit}
+        onSubmit={submitForm}
         className="fluid d-flex flex-column justify-content-center"
       >
         <Form.Row>
           <Form.Group as={Col} controlId="formGridLastName">
             <Form.Label>Nom</Form.Label>
-            <Form.Control placeholder="Votre nom..." />
+            <Form.Control
+              name="lastname"
+              onChange={updateForm}
+              placeholder="Votre nom..."
+            />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridFirstName">
             <Form.Label>Prénom</Form.Label>
-            <Form.Control placeholder="Votre prénom..." />
+            <Form.Control
+              name="firstname"
+              onChange={updateForm}
+              placeholder="Votre prénom..."
+            />
           </Form.Group>
         </Form.Row>
 
         <Form.Group controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Un email valide..." />
+          <Form.Control
+            name="email"
+            onChange={updateForm}
+            type="email"
+            placeholder="Un email valide..."
+          />
         </Form.Group>
 
         <Form.Row>
           <Form.Group as={Col} controlId="formGridPassword1">
             <Form.Label>Mot de passe</Form.Label>
             <Form.Control
+              name="password"
+              onChange={updateForm}
               type="password"
               placeholder="choisissez un mot de passe sécurisé"
             />

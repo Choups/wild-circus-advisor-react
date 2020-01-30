@@ -13,14 +13,14 @@ import Circus from "./pages/Circus";
 import Cart from "./pages/Cart";
 
 const App = () => {
-  const [datas, setdatas] = useState();
+  const [connectedUser, setConnectedUser] = useState();
 
   return (
     <div>
       <Context.Provider
         value={{
-          datas,
-          setdatas
+          connectedUser,
+          setConnectedUser
         }}
       >
         <BrowserRouter>
@@ -28,31 +28,29 @@ const App = () => {
             <Route exact path="/" component={LandingPage} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/form" component={SignupForm} />
+            <Route path="/form/:level" component={SignupForm} />
             <Route path="/dashboard">
-              <Layout>
+              <Layout child="dashboard">
                 <Dashboard />
               </Layout>
             </Route>
-            <Route path="/circus/:idcircus">
-              <Layout>
+            <Route path="/circus">
+              <Layout child="circus">
                 <Circus />
               </Layout>
             </Route>
             <Route path="/profile">
-              <Layout>
+              <Layout child="profile">
                 <Profile />
               </Layout>
             </Route>
             <Route path="/cart">
-              <Layout>
+              <Layout child="cart">
                 <Cart />
               </Layout>
             </Route>
             <Route path="/404">
-              <Layout>
-                <NotFound />
-              </Layout>
+              <NotFound />
             </Route>
             <Redirect to="/404" />
           </Switch>

@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import logo from "../logo.svg";
+import { Link } from "react-router-dom";
 
 const NavbarComp = () => {
   return (
@@ -26,9 +27,15 @@ const NavbarComp = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#link">Réserver un spectacle</Nav.Link>
-          <Nav.Link href="#link">Mon historique</Nav.Link>
-          <Nav.Link href="#link">Panier</Nav.Link>
+          <Nav.Link as={Link} to="/dashboard">
+            Réserver un spectacle
+          </Nav.Link>
+          <Nav.Link as={Link} to="/history">
+            Mon historique
+          </Nav.Link>
+          <Nav.Link as={Link} to="/cart">
+            Panier
+          </Nav.Link>
         </Nav>
         <Form inline>
           <FormControl

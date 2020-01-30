@@ -10,8 +10,8 @@ const Dashboard = () => {
   return (
     <Container style={{ display: "flex", flexWrap: "wrap" }}>
       {fakedata.map((a, index) => (
-        <Card style={{ width: "18rem", margin: "20px auto" }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
+        <Card key={index} style={{ width: "18rem", margin: "20px auto" }}>
+          <Card.Img variant="top" src="https://via.placeholder.com/120x80" />
           <Card.Body>
             <Card.Title>Cirque 1</Card.Title>
             <Card.Text>Texte d'accroche du cirque 1.</Card.Text>
