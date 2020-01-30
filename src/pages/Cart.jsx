@@ -51,8 +51,8 @@ const Cart = () => {
               </tr>
             </thead>
             <tbody>
-              {arrayOfProducts.map(product => (
-                <tr key={product.event}>
+              {arrayOfProducts.map((product, index) => (
+                <tr key={index}>
                   <td>
                     <img
                       style={{ height: "50px" }}

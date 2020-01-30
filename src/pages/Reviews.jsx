@@ -37,14 +37,14 @@ const Reviews = () => {
     return (
       <Layout child="circus">
         <Container>
-          <p>{dataCircusSelected.name}</p>
-          <p>{dataCircusSelected.image}</p>
-          <p>{dataCircusSelected.firstname}</p>
-          <p>{dataCircusSelected.lastname}</p>
-          <p>{dataCircusSelected.content}</p>
+          <p>{dataCircusSelected[0].name}</p>
+          <p>{dataCircusSelected[0].image}</p>
+          <p>{dataCircusSelected[0].firstname}</p>
+          <p>{dataCircusSelected[0].lastname}</p>
+          <p>{dataCircusSelected[0].content}</p>
 
-          {dataList.map(review => (
-            <p>
+          {dataList.map((review, index) => (
+            <p key={index}>
               {review.date} / {review.review} / {review.firstname} /{" "}
               {review.lastname} / {review.city}
             </p>

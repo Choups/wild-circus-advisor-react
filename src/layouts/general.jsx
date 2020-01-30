@@ -19,9 +19,7 @@ const Layout = ({ children, child }) => {
       })
     })
       .then(res => res.json())
-      .then(data =>
-        !connectedUser ? setConnectedUser(data.result[0].iduser) : data
-      )
+      .then(data => setConnectedUser(data.result[0].iduser))
       .catch(err => setIsLoggedIn("no-access"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
