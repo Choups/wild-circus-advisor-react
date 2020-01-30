@@ -4,9 +4,12 @@ import Table from "react-bootstrap/Table";
 import Layout from "../layouts/general";
 import axios from "axios";
 import Context from "../context/";
+import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
 
 const Circus = () => {
   const { circusSelected } = useContext(Context);
+  const { cart, setCart } = useContext(Context);
   const [eventData, setEventData] = useState();
 
   //FETCH EVENTS FROM SELECTED CIRCUS
@@ -52,12 +55,34 @@ const Circus = () => {
                   <td>{data.city}</td>
                   <td>{data.slots}</td>
                   <td>{data.price}</td>
-                  <td>- O + OK </td>
+                  <td>
+                    <Form.Control
+                      type="number"
+                      id={data.idevent}
+                      placeholder="0"
+                      onChange={e =>
+                        setCart({
+                          ...cart,
+                          [e.target.id]: {
+                            quantity: e.target.value,
+                            date: data.date,
+                            city: data.city,
+                            slots: data.slots,
+                            price: data.price,
+                            idevent: data.idevent,
+                            circus: data.name,
+                            image: data.image
+                          }
+                        })
+                      }
+                    />
+                  </td>
                   <td>O X I</td>
                 </tr>
               ))}
             </tbody>
           </Table>
+          <Link to="/cart">panier</Link>
         </Container>
       </Layout>
     );

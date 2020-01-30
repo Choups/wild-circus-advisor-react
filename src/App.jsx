@@ -15,6 +15,7 @@ const App = () => {
   const [connectedUser, setConnectedUser] = useState();
   const [circusList, setCircusList] = useState();
   const [circusSelected, setCircusSelected] = useState();
+  const [cart, setCart] = useState();
 
   return (
     <div>
@@ -25,7 +26,9 @@ const App = () => {
           circusList,
           setCircusList,
           circusSelected,
-          setCircusSelected
+          setCircusSelected,
+          cart,
+          setCart
         }}
       >
         <BrowserRouter>
