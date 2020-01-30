@@ -1,38 +1,73 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
-
-const fakedata = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+import Layout from "../layouts/general";
+import axios from "axios";
+import Context from "../context/";
 
 const Circus = () => {
-  return (
-    <Container>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Ville</th>
-            <th>Places restantes</th>
-            <th>Tarif</th>
-            <th>Quantité</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {fakedata.map((a, index) => (
-            <tr>
-              <td>20/09/2020</td>
-              <td>Paris</td>
-              <td>250</td>
-              <td>45,00 €</td>
-              <td>- O + OK </td>
-              <td>O X I</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Container>
-  );
+  const { circusSelected } = useContext(Context);
+  const [eventData, setEventData] = useState();
+
+  //FETCH EVENTS FROM SELECTED CIRCUS
+  useEffect(() => {
+    // Make a request for a user with a given ID
+    axios
+      .get(`/api/event/${circusSelected}`)
+      .then(function(response) {
+        // handle success
+        setEventData(response.data);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function() {
+        // always executed
+        console.log(eventData);
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (eventData) {
+    return (
+      <Layout child="circus">
+        <Container>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Ville</th>
+                <th>Places restantes</th>
+                <th>Tarif</th>
+                <th>Quantité</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {eventData.map(data => (
+                <tr key={data.idevent}>
+                  <td>{data.date}</td>
+                  <td>{data.city}</td>
+                  <td>{data.slots}</td>
+                  <td>{data.price}</td>
+                  <td>- O + OK </td>
+                  <td>O X I</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Container>
+      </Layout>
+    );
+  } else {
+    return (
+      <Layout child="circus">
+        <div></div>
+      </Layout>
+    );
+  }
 };
 
 export default Circus;

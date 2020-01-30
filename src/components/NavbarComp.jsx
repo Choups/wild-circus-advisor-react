@@ -8,13 +8,8 @@ import { Link } from "react-router-dom";
 
 const NavbarComp = () => {
   return (
-    <Navbar
-      fixed="top"
-      bg="light"
-      expand="lg"
-      style={{ marginBottom: "200px" }}
-    >
-      <Navbar.Brand href="#home">
+    <Navbar fixed="top" bg="light" expand="lg">
+      <Navbar.Brand as={Link} to="/">
         <img
           alt=""
           src={logo}

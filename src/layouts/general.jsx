@@ -9,7 +9,7 @@ import Context from "../context/";
 
 const Layout = ({ children, child }) => {
   const [isLoggedIn, setIsLoggedIn] = useState("access");
-  const { setConnectedUser } = React.useContext(Context);
+  const { connectedUser, setConnectedUser } = React.useContext(Context);
 
   useEffect(() => {
     fetch("api/user/verify", {
@@ -19,10 +19,12 @@ const Layout = ({ children, child }) => {
       })
     })
       .then(res => res.json())
-      .then(data => setConnectedUser(data.result[0].iduser))
-      .then(console.log("log status", isLoggedIn))
+      .then(data =>
+        !connectedUser ? setConnectedUser(data.result[0].iduser) : data
+      )
       .catch(err => setIsLoggedIn("no-access"));
-  }, [isLoggedIn, setConnectedUser]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (isLoggedIn === "no-access") {
     return <Redirect to="/login" />;

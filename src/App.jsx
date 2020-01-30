@@ -8,19 +8,24 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import SignupForm from "./pages/SignupForm";
-import Layout from "./layouts/general";
 import Circus from "./pages/Circus";
 import Cart from "./pages/Cart";
 
 const App = () => {
   const [connectedUser, setConnectedUser] = useState();
+  const [circusList, setCircusList] = useState();
+  const [circusSelected, setCircusSelected] = useState();
 
   return (
     <div>
       <Context.Provider
         value={{
           connectedUser,
-          setConnectedUser
+          setConnectedUser,
+          circusList,
+          setCircusList,
+          circusSelected,
+          setCircusSelected
         }}
       >
         <BrowserRouter>
@@ -29,29 +34,11 @@ const App = () => {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/form/:level" component={SignupForm} />
-            <Route path="/dashboard">
-              <Layout child="dashboard">
-                <Dashboard />
-              </Layout>
-            </Route>
-            <Route path="/circus">
-              <Layout child="circus">
-                <Circus />
-              </Layout>
-            </Route>
-            <Route path="/profile">
-              <Layout child="profile">
-                <Profile />
-              </Layout>
-            </Route>
-            <Route path="/cart">
-              <Layout child="cart">
-                <Cart />
-              </Layout>
-            </Route>
-            <Route path="/404">
-              <NotFound />
-            </Route>
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/circus" component={Circus} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/404" component={NotFound} />
             <Redirect to="/404" />
           </Switch>
         </BrowserRouter>

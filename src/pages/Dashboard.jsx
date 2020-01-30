@@ -1,28 +1,76 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-
-const fakedata = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+import Layout from "../layouts/general";
+import Context from "../context/";
+import axios from "axios";
 
 const Dashboard = () => {
-  return (
-    <Container style={{ display: "flex", flexWrap: "wrap" }}>
-      {fakedata.map((a, index) => (
-        <Card key={index} style={{ width: "18rem", margin: "20px auto" }}>
-          <Card.Img variant="top" src="https://via.placeholder.com/120x80" />
-          <Card.Body>
-            <Card.Title>Cirque 1</Card.Title>
-            <Card.Text>Texte d'accroche du cirque 1.</Card.Text>
-            <Link to="/form?compte=standard">
-              <Button variant="primary">Réserver</Button>
-            </Link>
-          </Card.Body>
-        </Card>
-      ))}
-    </Container>
-  );
+  const { circusList, setCircusList } = useContext(Context);
+  const { setCircusSelected } = useContext(Context);
+
+  //FETCH ALL CIRCUS
+  useEffect(() => {
+    // Make a request for a user with a given ID
+    axios
+      .get("/api/circus")
+      .then(function(response) {
+        // handle success
+        setCircusList(response.data);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function() {
+        // always executed
+        console.log(circusList);
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (circusList) {
+    return (
+      <Layout child="dashboard">
+        <Container
+          fluid
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-around"
+          }}
+        >
+          {circusList.map(circus => (
+            <Card
+              key={circus.idcircus}
+              style={{ width: "18rem", margin: "20px" }}
+            >
+              <Card.Img variant="top" src={circus.image} />
+              <Card.Body>
+                <Card.Title>{circus.name}</Card.Title>
+                <Card.Text>{circus.content}</Card.Text>
+                <Link
+                  to="/circus"
+                  onClick={() => setCircusSelected(circus.idcircus)}
+                >
+                  <Button variant="primary">Réserver</Button>
+                </Link>
+              </Card.Body>
+            </Card>
+          ))}
+        </Container>
+      </Layout>
+    );
+  } else {
+    return (
+      <Layout child="dashboard">
+        <div></div>
+      </Layout>
+    );
+  }
 };
 
 export default Dashboard;
