@@ -15,9 +15,10 @@ import Reviews from "./pages/Reviews";
 
 const App = () => {
   const [connectedUser, setConnectedUser] = useState();
+  const [who, setWho] = useState("invité");
   const [circusList, setCircusList] = useState();
   const [circusSelected, setCircusSelected] = useState();
-  const [cart, setCart] = useState();
+  const [cart, setCart] = useState([]);
   const [history, setHistory] = useState();
 
   return (
@@ -33,7 +34,9 @@ const App = () => {
           cart,
           setCart,
           history,
-          setHistory
+          setHistory,
+          who,
+          setWho
         }}
       >
         <BrowserRouter>

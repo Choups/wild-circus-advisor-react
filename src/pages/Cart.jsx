@@ -10,28 +10,25 @@ import axios from "axios";
 const Cart = () => {
   const { cart, setCart, connectedUser } = useContext(Context);
 
-  if (cart) {
+  if (Object.keys(cart).length > 0) {
     const arrayOfProducts = Object.keys(cart).map(key => cart[key]);
     const subTotal = arrayOfProducts
       .map(item => item.price * item.quantity)
       .reduce((a, b) => a + b);
 
     const buy = () => {
-      arrayOfProducts.forEach(
-        product =>
-          axios
-            .post("/api/history/new", {
-              event_idevent: product.idevent,
-              quantity: product.quantity,
-              user_iduser: connectedUser
-            })
-            .then(res => res.data)
-            .catch(function(error) {
-              console.log(error);
-            })
-        // .finally(function() {
-        //   props.history.push("/dashboard");
-        // });
+      arrayOfProducts.forEach(product =>
+        axios
+          .post("/api/history/new", {
+            event_idevent: product.idevent,
+            quantity: product.quantity,
+            user_iduser: connectedUser
+          })
+          .then(res => res.data)
+          .catch(function(error) {
+            console.log(error);
+          })
+          .finally(setCart([]))
       );
     };
 

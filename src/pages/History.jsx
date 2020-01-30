@@ -5,11 +5,14 @@ import Button from "react-bootstrap/Button";
 import Layout from "../layouts/general";
 import Context from "../context";
 import Form from "react-bootstrap/Form";
+
 import axios from "axios";
 
 const History = () => {
   const { connectedUser, history, setHistory } = useContext(Context);
   const [newReview, setNewReview] = useState();
+
+  const [newNote, setNewNote] = useState();
   const [reload, setReload] = useState(0);
 
   //FETCH ALL CIRCUS
@@ -26,7 +29,7 @@ const History = () => {
         console.log(error);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reload]);
+  }, [connectedUser, reload]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -34,7 +37,8 @@ const History = () => {
 
     axios
       .put(`/api/history/${connectedUser}/${e.target.id}`, {
-        review: newReview
+        review: newReview,
+        note: newNote
       })
       .then(res => res.data)
       .catch(function(error) {
@@ -81,6 +85,17 @@ const History = () => {
                           placeholder="Ajouter un avis"
                           onChange={e => setNewReview(e.target.value)}
                         />
+                        <Form.Control
+                          as="select"
+                          onChange={e => setNewNote(e.target.value)}
+                        >
+                          <option>Nul</option>
+                          <option>Bof</option>
+                          <option>Pas mal</option>
+                          <option>Sympa</option>
+                          <option>Génial</option>
+                        </Form.Control>
+
                         <Button type="submit">Ajouter</Button>
                       </Form>
                     )}

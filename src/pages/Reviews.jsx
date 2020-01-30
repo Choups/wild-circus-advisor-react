@@ -1,14 +1,14 @@
 import React, { useEffect, useContext, useState } from "react";
 import Container from "react-bootstrap/Container";
-import Table from "react-bootstrap/Table";
+
 import Layout from "../layouts/general";
 import axios from "axios";
 import Context from "../context/";
-import Form from "react-bootstrap/Form";
+
 import { Link } from "react-router-dom";
 
 const Reviews = () => {
-  const { circusSelected, circusList } = useContext(Context);
+  const { circusSelected, connectedUser, circusList } = useContext(Context);
 
   const [dataList, setDataList] = useState();
 
@@ -27,9 +27,9 @@ const Reviews = () => {
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [connectedUser]);
 
-  if (dataList && circusList) {
+  if (dataList && circusList && circusSelected) {
     const dataCircusSelected = circusList.filter(
       circus => circus.idcircus === circusSelected
     );
@@ -46,7 +46,7 @@ const Reviews = () => {
           {dataList.map((review, index) => (
             <p key={index}>
               {review.date} / {review.review} / {review.firstname} /{" "}
-              {review.lastname} / {review.city}
+              {review.lastname} / {review.city} / {review.note}
             </p>
           ))}
           <Link to="/circus">Réserver</Link>
