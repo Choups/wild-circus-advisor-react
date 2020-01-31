@@ -46,7 +46,8 @@ const Dashboard = () => {
           {circusList.map(circus => (
             <Card
               key={circus.idcircus}
-              style={{ width: "22rem", margin: "0px 20px 20px 20px" }}
+              style={{ width: "22rem", margin: "0px auto 20px auto" }}
+              className="text-white bg-dark"
             >
               <Card.Img
                 variant="top"

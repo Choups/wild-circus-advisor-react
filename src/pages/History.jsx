@@ -14,7 +14,7 @@ const History = () => {
   );
   const [newReview, setNewReview] = useState();
 
-  const [newNote, setNewNote] = useState();
+  const [newNote, setNewNote] = useState("Génial");
 
   //FETCH ALL CIRCUS
   useEffect(() => {
@@ -52,7 +52,13 @@ const History = () => {
     return (
       <Layout>
         <Container fluid>
-          <Table striped bordered hover responsive variant="light">
+          <Table
+            striped
+            bordered
+            hover
+            responsive
+            className="text-white bg-dark"
+          >
             <thead>
               <tr>
                 <th>Cirque</th>
@@ -60,7 +66,8 @@ const History = () => {
                 <th>Date</th>
                 <th>Ville</th>
                 <th>Quantité</th>
-                <th>Votre avis</th>
+                <th colSpan="2">Votre avis</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -77,24 +84,33 @@ const History = () => {
                   <td>{product.date}</td>
                   <td>{product.city}</td>
                   <td>{product.quantity}</td>
-                  <td>
+                  <td colSpan="2">
                     {product.review ? (
-                      product.review
+                      <p>
+                        {product.note}: {product.review}
+                      </p>
                     ) : (
-                      <Form id={product.event_idevent} onSubmit={handleSubmit}>
+                      <Form
+                        noValidate
+                        id={product.event_idevent}
+                        onSubmit={handleSubmit}
+                        className="d-flex justify-content-around"
+                      >
                         <Form.Control
+                          required
                           placeholder="Ajouter un avis"
                           onChange={e => setNewReview(e.target.value)}
                         />
                         <Form.Control
+                          required
                           as="select"
                           onChange={e => setNewNote(e.target.value)}
                         >
-                          <option>Nul</option>
-                          <option>Bof</option>
-                          <option>Pas mal</option>
-                          <option>Sympa</option>
                           <option>Génial</option>
+                          <option>Sympa</option>
+                          <option>Pas mal</option>
+                          <option>Bof</option>
+                          <option>Nul</option>
                         </Form.Control>
 
                         <Button type="submit">Ajouter</Button>

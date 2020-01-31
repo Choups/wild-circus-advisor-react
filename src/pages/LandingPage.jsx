@@ -12,16 +12,16 @@ const LandingPage = () => {
       className="d-flex flex-column justify-content-center fullHeight"
     >
       {/* <YoutubeBackground videoId={"x-1-gLv3aWs"} overlay={"rgba(0,0,0,0.5)"}> */}
-      <Row className="d-flex justify-content-center">
-        <h1>Wild Circus Booking</h1>
+      <Row className="d-flex justify-content-center text-white">
+        <h1>Wild Circus Advisor</h1>
       </Row>
-      <Row className="d-flex justify-content-center">
+      <Row className="d-flex justify-content-center text-white">
         <p>
           Bienvenue sur la plateforme de réservation en ligne specialisèe dans
           les cirques.
         </p>
       </Row>
-      <Row className="d-flex justify-content-center">
+      <Row className="d-flex justify-content-center text-white">
         <Link to="/signup">
           <Button>S'inscrire</Button>
         </Link>

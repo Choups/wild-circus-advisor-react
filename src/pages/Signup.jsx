@@ -5,17 +5,29 @@ import CardDeck from "react-bootstrap/CardDeck";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import std from "../assets/Laughing-Family.jpg";
+import pro from "../assets/pro.jpg";
 
 const Signup = () => {
   return (
     <Container className="fluid d-flex flex-column justify-content-around fullHeight">
-      <Row className="d-flex justify-content-center">
+      <Row className="d-flex justify-content-center text-white">
         <h2>Êtes-vous un futur client ou un professionnel du cirque ?</h2>
       </Row>
       <Row className="d-flex justify-content-center">
         <CardDeck>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+          <Card
+            style={{
+              width: "22rem",
+              backgroundColor: "rgba(0,0,0,0.4)",
+              marginRight: "10vw"
+            }}
+            className="text-white"
+          >
+            <Card.Img
+              variant="top"
+              src={std} /* style={{ height: "200px" }} */
+            />
             <Card.Body>
               <Card.Title>Futur client</Card.Title>
               <Card.Text>
@@ -28,8 +40,18 @@ const Signup = () => {
             </Card.Body>
           </Card>
 
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+          <Card
+            style={{
+              width: "22rem",
+              backgroundColor: "rgba(0,0,0,0.4)",
+              marginLeft: "10vw"
+            }}
+            className="text-white"
+          >
+            <Card.Img
+              variant="top"
+              src={pro} /* style={{ height: "200px" }} */
+            />
             <Card.Body>
               <Card.Title>Professionnel du cirque</Card.Title>
               <Card.Text>

@@ -31,13 +31,19 @@ const Circus = () => {
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [circusSelected]);
 
   if (eventData) {
     return (
       <Layout>
         <Container fluid>
-          <Table striped bordered hover responsive variant="light">
+          <Table
+            striped
+            bordered
+            hover
+            responsive
+            className="text-white bg-dark"
+          >
             <thead>
               <tr>
                 <th>Date</th>

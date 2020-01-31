@@ -43,7 +43,7 @@ const SignupForm = props => {
       </Row>
       <Form
         onSubmit={submitForm}
-        className="fluid d-flex flex-column justify-content-center"
+        className="fluid d-flex flex-column justify-content-center text-white "
       >
         <Form.Row>
           <Form.Group as={Col} controlId="formGridLastName">

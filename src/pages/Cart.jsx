@@ -35,7 +35,14 @@ const Cart = () => {
     return (
       <Layout>
         <Container fluid>
-          <Table striped bordered hover responsive variant="light">
+          <Table
+            striped
+            bordered
+            hover
+            responsive
+            variant="light"
+            className="text-white bg-dark"
+          >
             <thead>
               <tr>
                 <th>Cirque</th>

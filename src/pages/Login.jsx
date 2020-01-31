@@ -33,7 +33,7 @@ const Login = props => {
   return (
     <Container className="fluid d-flex flex-column justify-content-around fullHeight">
       <Row className="d-flex justify-content-center">
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className="text-white">
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
