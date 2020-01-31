@@ -9,11 +9,12 @@ import Form from "react-bootstrap/Form";
 import axios from "axios";
 
 const History = () => {
-  const { connectedUser, history, setHistory } = useContext(Context);
+  const { connectedUser, history, reload, setReload, setHistory } = useContext(
+    Context
+  );
   const [newReview, setNewReview] = useState();
 
   const [newNote, setNewNote] = useState();
-  const [reload, setReload] = useState(0);
 
   //FETCH ALL CIRCUS
   useEffect(() => {
@@ -49,9 +50,9 @@ const History = () => {
 
   if (history) {
     return (
-      <Layout child="history">
-        <Container>
-          <Table striped bordered hover>
+      <Layout>
+        <Container fluid>
+          <Table striped bordered hover responsive variant="light">
             <thead>
               <tr>
                 <th>Cirque</th>
@@ -108,7 +109,7 @@ const History = () => {
       </Layout>
     );
   } else {
-    return <Layout child="cart"></Layout>;
+    return <Layout></Layout>;
   }
 };
 

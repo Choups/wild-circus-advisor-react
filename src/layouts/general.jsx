@@ -22,7 +22,7 @@ const Layout = ({ children, child }) => {
       .then(data => setConnectedUser(data.result[0].iduser))
       .catch(err => setIsLoggedIn("no-access"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [connectedUser]);
 
   if (isLoggedIn === "no-access") {
     return <Redirect to="/login" />;
@@ -32,10 +32,17 @@ const Layout = ({ children, child }) => {
     <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
       <NavbarComp />
       <Row noGutters>
-        <Col sm={3} style={{ paddingTop: "80px" }}>
-          <Sidebar parent={child} />
+        <Col
+          sm={3}
+          className="scrollhide"
+          style={{ maxHeight: "100vh", overflow: "auto", paddingTop: "80px" }}
+        >
+          <Sidebar />
         </Col>
-        <Col sm={9} style={{ paddingTop: "80px" }}>
+        <Col
+          sm={9}
+          style={{ maxHeight: "100vh", overflow: "auto", paddingTop: "80px" }}
+        >
           {children}
         </Col>
       </Row>

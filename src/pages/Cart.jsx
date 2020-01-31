@@ -33,9 +33,9 @@ const Cart = () => {
     };
 
     return (
-      <Layout child="cart">
-        <Container>
-          <Table striped bordered hover>
+      <Layout>
+        <Container fluid>
+          <Table striped bordered hover responsive variant="light">
             <thead>
               <tr>
                 <th>Cirque</th>
@@ -111,7 +111,7 @@ const Cart = () => {
       </Layout>
     );
   } else {
-    return <Layout child="cart"></Layout>;
+    return <Layout></Layout>;
   }
 };
 

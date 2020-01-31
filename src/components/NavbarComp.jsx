@@ -33,7 +33,7 @@ const NavbarComp = () => {
   if (connectedUser && who) {
     return (
       <Navbar fixed="top" bg="light" expand="lg">
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand as={Link} to="/" style={{ width: "23.5%" }}>
           <img
             alt=""
             src={logo}
@@ -41,7 +41,7 @@ const NavbarComp = () => {
             height="30"
             className="d-inline-block align-top"
           />{" "}
-          Wild Circus
+          Wild Circus Advisor
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

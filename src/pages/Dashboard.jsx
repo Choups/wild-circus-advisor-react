@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 import Layout from "../layouts/general";
 import Context from "../context/";
@@ -34,36 +35,41 @@ const Dashboard = () => {
 
   if (circusList) {
     return (
-      <Layout child="dashboard">
+      <Layout>
         <Container
           fluid
           style={{
             display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-around"
+            flexWrap: "wrap"
           }}
         >
           {circusList.map(circus => (
             <Card
               key={circus.idcircus}
-              style={{ width: "18rem", margin: "20px" }}
+              style={{ width: "22rem", margin: "0px 20px 20px 20px" }}
             >
-              <Card.Img variant="top" src={circus.image} />
-              <Card.Body>
+              <Card.Img
+                variant="top"
+                src={circus.image}
+                style={{ height: "200px" }}
+              />
+              <Card.Body className="d-flex flex-column justify-content-between">
                 <Card.Title>{circus.name}</Card.Title>
                 <Card.Text>{circus.content}</Card.Text>
-                <Link
-                  to="/circus"
-                  onClick={() => setCircusSelected(circus.idcircus)}
-                >
-                  <Button variant="primary">Réserver</Button>
-                </Link>
-                <Link
-                  to="/reviews"
-                  onClick={() => setCircusSelected(circus.idcircus)}
-                >
-                  <Button variant="primary">Lire les avis</Button>
-                </Link>
+                <Row noGutters className="d-flex justify-content-between">
+                  <Link
+                    to="/circus"
+                    onClick={() => setCircusSelected(circus.idcircus)}
+                  >
+                    <Button variant="primary">Réserver</Button>
+                  </Link>
+                  <Link
+                    to="/reviews"
+                    onClick={() => setCircusSelected(circus.idcircus)}
+                  >
+                    <Button variant="outline-secondary">Lire les avis</Button>
+                  </Link>
+                </Row>
               </Card.Body>
             </Card>
           ))}
@@ -72,7 +78,7 @@ const Dashboard = () => {
     );
   } else {
     return (
-      <Layout child="dashboard">
+      <Layout>
         <div></div>
       </Layout>
     );

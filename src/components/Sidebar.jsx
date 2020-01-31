@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import { IoIosHeart } from "react-icons/io";
+import { FaRegSadTear } from "react-icons/fa";
 import axios from "axios";
+import Context from "../context/";
 
-const Sidebar = ({ parent }) => {
-  const [dataList, setDataList] = useState();
+const Sidebar = () => {
+  const { dataList, setDataList } = useContext(Context);
+  const { reload } = useContext(Context);
 
   //FETCH REVIEWS FROM SELECTED CIRCUS
   useEffect(() => {
@@ -21,53 +24,72 @@ const Sidebar = ({ parent }) => {
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [reload]);
 
   if (dataList) {
+    const MakeSomeStars = index => {
+      switch (dataList[index].note) {
+        case "Excellent":
+          return (
+            <div>
+              <IoIosHeart />
+              <IoIosHeart />
+              <IoIosHeart />
+              <IoIosHeart />
+              <IoIosHeart />
+            </div>
+          );
+        case "Génial":
+          return (
+            <div>
+              <IoIosHeart />
+              <IoIosHeart />
+              <IoIosHeart />
+              <IoIosHeart />
+            </div>
+          );
+        case "Sympa":
+          return (
+            <div>
+              <IoIosHeart />
+              <IoIosHeart />
+              <IoIosHeart />
+            </div>
+          );
+        case "Pas mal":
+          return (
+            <div>
+              <IoIosHeart />
+              <IoIosHeart />
+            </div>
+          );
+        case "Bof":
+          return (
+            <div>
+              <IoIosHeart />
+            </div>
+          );
+        case "Nul":
+          return (
+            <div>
+              <FaRegSadTear />
+              <FaRegSadTear />
+              <FaRegSadTear />
+            </div>
+          );
+
+        default:
+          return <div></div>;
+      }
+    };
+
     return (
-      <Container
-        className="scrollhide"
-        style={{ maxHeight: "90vh", overflow: "auto" }}
-      >
-        {dataList.map(review => (
-          <Card style={{ marginBottom: "20px" }}>
+      <Container>
+        {dataList.map((review, index) => (
+          <Card key={index} style={{ marginBottom: "20px" }}>
             <Card.Header className="d-flex justify-content-between align-items-center">
               <div>{review.name}</div>
-              <div>
-                {review.note === "Excellent" ? (
-                  <span>
-                    <IoIosHeart />
-                    <IoIosHeart />
-                    <IoIosHeart />
-                    <IoIosHeart />
-                    <IoIosHeart />
-                  </span>
-                ) : "Génial" ? (
-                  <span>
-                    <IoIosHeart />
-                    <IoIosHeart />
-                    <IoIosHeart />
-                    <IoIosHeart />
-                  </span>
-                ) : "Sympa" ? (
-                  <span>
-                    <IoIosHeart />
-                    <IoIosHeart />
-                    <IoIosHeart />
-                  </span>
-                ) : "Pas mal" ? (
-                  <span>
-                    <IoIosHeart />
-                    <IoIosHeart />
-                  </span>
-                ) : "Bof" ? (
-                  <span>
-                    <IoIosHeart />
-                  </span>
-                ) : (
-                  ""
-                )}
-              </div>
+              <div>{MakeSomeStars(index)}</div>
               <img
                 src={review.image}
                 alt={review.name}

@@ -35,9 +35,9 @@ const Circus = () => {
 
   if (eventData) {
     return (
-      <Layout child="circus">
-        <Container>
-          <Table striped bordered hover>
+      <Layout>
+        <Container fluid>
+          <Table striped bordered hover responsive variant="light">
             <thead>
               <tr>
                 <th>Date</th>
@@ -88,7 +88,7 @@ const Circus = () => {
     );
   } else {
     return (
-      <Layout child="circus">
+      <Layout>
         <div></div>
       </Layout>
     );

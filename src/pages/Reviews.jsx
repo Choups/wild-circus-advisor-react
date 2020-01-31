@@ -35,8 +35,8 @@ const Reviews = () => {
     );
     console.log(dataCircusSelected, dataList);
     return (
-      <Layout child="circus">
-        <Container>
+      <Layout>
+        <Container fluid>
           <p>{dataCircusSelected[0].name}</p>
           <p>{dataCircusSelected[0].image}</p>
           <p>{dataCircusSelected[0].firstname}</p>
@@ -56,7 +56,7 @@ const Reviews = () => {
     );
   } else {
     return (
-      <Layout child="reviews">
+      <Layout>
         <div></div>
       </Layout>
     );

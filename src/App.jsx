@@ -20,6 +20,8 @@ const App = () => {
   const [circusSelected, setCircusSelected] = useState();
   const [cart, setCart] = useState([]);
   const [history, setHistory] = useState();
+  const [reload, setReload] = useState(1);
+  const [dataList, setDataList] = useState();
 
   return (
     <div>
@@ -36,7 +38,11 @@ const App = () => {
           history,
           setHistory,
           who,
-          setWho
+          setWho,
+          reload,
+          setReload,
+          dataList,
+          setDataList
         }}
       >
         <BrowserRouter>
