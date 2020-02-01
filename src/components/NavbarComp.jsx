@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
-import logo from "../logo.svg";
+import logo from "../assets/circus.svg";
 import { Link } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import Context from "../context/";
@@ -18,11 +18,11 @@ const NavbarComp = () => {
     // Make a request for a user with a given ID
     axios
       .get(`/api/user/${connectedUser}`)
-      .then(function(response) {
+      .then(function (response) {
         // handle success
         setWho(response.data[0]);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // handle error
         console.log(error);
       });
@@ -32,7 +32,7 @@ const NavbarComp = () => {
 
   if (connectedUser && who) {
     return (
-      <Navbar fixed="top" bg="light" expand="lg">
+      <Navbar fixed="top" expand="lg" bg="light" variant="light">
         <Navbar.Brand as={Link} to="/" style={{ width: "23.5%" }}>
           <img
             alt=""
@@ -46,7 +46,7 @@ const NavbarComp = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/dashboard">
+            <Nav.Link as={Link} to="/dashboard" >
               Réserver un spectacle
             </Nav.Link>
             <Nav.Link as={Link} to="/history">
@@ -72,7 +72,7 @@ const NavbarComp = () => {
             />
           </Form>
           <Dropdown>
-            <Dropdown.Toggle variant="outline-info" id="dropdown-basic">
+            <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
               Bonjour {who.firstname}
             </Dropdown.Toggle>
             <Dropdown.Menu>

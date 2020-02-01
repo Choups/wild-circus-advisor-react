@@ -25,7 +25,7 @@ const Cart = () => {
             user_iduser: connectedUser
           })
           .then(res => res.data)
-          .catch(function(error) {
+          .catch(function (error) {
             console.log(error);
           })
           .finally(setCart([]))
@@ -36,12 +36,9 @@ const Cart = () => {
       <Layout>
         <Container fluid>
           <Table
-            striped
-            bordered
+
             hover
             responsive
-            variant="light"
-            className="text-white bg-dark"
           >
             <thead>
               <tr>
@@ -65,7 +62,7 @@ const Cart = () => {
                     ></img>
                   </td>
                   <td>{product.circus}</td>
-                  <td>{product.date}</td>
+                  <td>{product.date.substring(0, 10)}</td>
                   <td>{product.city}</td>
                   <td>{product.price} €</td>
                   <td>- {product.quantity} + OK </td>
@@ -97,7 +94,7 @@ const Cart = () => {
               ))}
             </tbody>
           </Table>
-          <Table striped bordered hover>
+          <Table hover responsive>
             <thead>
               <tr>
                 <th>Total</th>
@@ -118,7 +115,36 @@ const Cart = () => {
       </Layout>
     );
   } else {
-    return <Layout></Layout>;
+    return <Layout>
+      <Container fluid>
+        <Table
+
+          hover
+          responsive
+        >
+          <thead>
+            <tr>
+              <th>Cirque</th>
+              <th>Nom</th>
+              <th>Date</th>
+              <th>Ville</th>
+              <th>Tarif</th>
+              <th>Quantité</th>
+              <th>Sous-total</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr >
+              <td colSpan="7">Votre panier est vide.</td>
+            </tr>
+
+          </tbody>
+        </Table>
+
+        <Button disabled>Valider le paiement</Button>
+      </Container>
+    </Layout>;
   }
 };
 

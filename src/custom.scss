@@ -1,5 +1,43 @@
 // Override default variables before the import
 // $body-bg: #000;
+/*! `Custom` Bootstrap 4 theme */
+
+
+
+$primary:#873f9a;
+$secondary:#c97c7d;
+$link-hover-decoration:none;
+// $card-border-radius:0.6rem;
+
+table, td, th, tr, thead, tbody {
+  border: 0 !important;
+  
+}
+
+table {
+  margin-top: -15px;
+  border-collapse:separate !important; 
+  border-spacing:0 15px !important; 
+}
+
+thead {
+  background-color: rgba(255,255,255,0.1) !important;
+}
+
+tbody {
+  background-color: rgba(255,255,255,0.8) !important;
+}
+
+
+.transcard {
+  background-color: rgba(255,255,255,0.8) !important;
+  // border-radius: 0.6rem !important;
+  border: none !important;
+}
+
+.blockquote {
+  font-size: 6px;
+}
 
 .fullHeight {
   min-height: 100vh;
@@ -10,5 +48,6 @@
 .scrollhide::-webkit-scrollbar {
   display: none;
 }
+
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";

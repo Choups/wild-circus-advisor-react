@@ -17,15 +17,15 @@ const Dashboard = () => {
     // Make a request for a user with a given ID
     axios
       .get("/api/circus")
-      .then(function(response) {
+      .then(function (response) {
         // handle success
         setCircusList(response.data);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // handle error
         console.log(error);
       })
-      .then(function() {
+      .then(function () {
         // always executed
         console.log(circusList);
       });
@@ -45,16 +45,16 @@ const Dashboard = () => {
         >
           {circusList.map(circus => (
             <Card
+              className="transcard"
               key={circus.idcircus}
               style={{ width: "22rem", margin: "0px auto 20px auto" }}
-              className="text-white bg-dark"
             >
               <Card.Img
                 variant="top"
                 src={circus.image}
                 style={{ height: "200px" }}
               />
-              <Card.Body className="d-flex flex-column justify-content-between">
+              <Card.Body className="d-flex flex-column justify-content-between ">
                 <Card.Title>{circus.name}</Card.Title>
                 <Card.Text>{circus.content}</Card.Text>
                 <Row noGutters className="d-flex justify-content-between">

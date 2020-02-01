@@ -29,9 +29,9 @@ const Layout = ({ children, child }) => {
   }
 
   return (
-    <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
+    <Container fluid style={{ paddingLeft: 0, paddingRight: 0, justifyContent: "space-evenely" }}>
       <NavbarComp />
-      <Row noGutters>
+      <Row noGutters style={{ maxWidth: "1800px", margin: "auto" }}>
         <Col
           sm={3}
           className="scrollhide"

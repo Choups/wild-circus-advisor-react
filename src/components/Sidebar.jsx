@@ -15,11 +15,11 @@ const Sidebar = () => {
   useEffect(() => {
     axios
       .get(`/api/reviews`)
-      .then(function(response) {
+      .then(function (response) {
         // handle success
         setDataList(response.data);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // handle error
         console.log(error);
       });
@@ -87,25 +87,22 @@ const Sidebar = () => {
     return (
       <Container>
         {dataList.map((review, index) => (
-          <Card
-            key={index}
-            style={{ marginBottom: "20px" }}
-            className="text-white bg-dark"
-          >
+          <Card key={index} style={{ marginBottom: "20px", backgroundColor: "rgba(255,255,255,0.1)", border: "none" }} >
             <Link
               to="/circus"
               onClick={() => setCircusSelected(review.idcircus)}
+
             >
-              <Card.Header className="d-flex justify-content-between align-items-center">
+              <Card.Header className="d-flex justify-content-between align-items-center text-white" style={{ border: "none" }}>
                 <div>{review.name}</div>
                 <div>{MakeSomeStars(index)}</div>
                 <img
                   src={review.image}
                   alt={review.name}
-                  style={{ height: "35px", borderRadius: "10px" }}
+                  style={{ height: "35px", width: "35px", borderRadius: "50%", }}
                 />
               </Card.Header>
-              <Card.Body>
+              <Card.Body className="transcard">
                 <blockquote className="blockquote mb-0">
                   <p>{review.review}</p>
                   <footer className="blockquote-footer">

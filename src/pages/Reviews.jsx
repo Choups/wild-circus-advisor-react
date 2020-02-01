@@ -17,11 +17,11 @@ const Reviews = () => {
     // Make a request for a user with a given ID
     axios
       .get(`/api/history/all/${circusSelected}`)
-      .then(function(response) {
+      .then(function (response) {
         // handle success
         setDataList(response.data);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // handle error
         console.log(error);
       });
@@ -45,7 +45,7 @@ const Reviews = () => {
 
           {dataList.map((review, index) => (
             <p key={index}>
-              {review.date} / {review.review} / {review.firstname} /{" "}
+              {review.date.substring(0, 10)} / {review.review} / {review.firstname} /{" "}
               {review.lastname} / {review.city} / {review.note}
             </p>
           ))}

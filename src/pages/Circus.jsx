@@ -17,15 +17,15 @@ const Circus = () => {
     // Make a request for a user with a given ID
     axios
       .get(`/api/event/${circusSelected}`)
-      .then(function(response) {
+      .then(function (response) {
         // handle success
         setEventData(response.data);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // handle error
         console.log(error);
       })
-      .then(function() {
+      .then(function () {
         // always executed
         console.log(eventData);
       });
@@ -39,10 +39,11 @@ const Circus = () => {
         <Container fluid>
           <Table
             striped
+            variant="light"
             bordered
             hover
             responsive
-            className="text-white bg-dark"
+
           >
             <thead>
               <tr>
