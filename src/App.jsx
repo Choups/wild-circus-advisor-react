@@ -12,7 +12,7 @@ import Circus from "./pages/Circus";
 import Cart from "./pages/Cart";
 import History from "./pages/History";
 import Reviews from "./pages/Reviews";
-import "./App.css"
+import "./App.css";
 
 const App = () => {
   const [connectedUser, setConnectedUser] = useState();
@@ -24,6 +24,9 @@ const App = () => {
   const [reload, setReload] = useState(1);
   const [dataList, setDataList] = useState();
   const [animation, setAnimation] = useState(true);
+  const [chat, setChat] = useState();
+  const [loading, setLoading] = useState(false);
+  const [newMsg, setNewMsg] = useState();
 
   return (
     <div className="App">
@@ -44,7 +47,15 @@ const App = () => {
           reload,
           setReload,
           dataList,
-          setDataList, animation, setAnimation
+          setDataList,
+          animation,
+          setAnimation,
+          chat,
+          setChat,
+          loading,
+          setLoading,
+          newMsg,
+          setNewMsg
         }}
       >
         <BrowserRouter>

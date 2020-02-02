@@ -5,31 +5,34 @@ import Layout from "../layouts/general";
 import axios from "axios";
 import Context from "../context/";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button"
+import Button from "react-bootstrap/Button";
+import Jumbotron from "react-bootstrap/Jumbotron";
 import { Link } from "react-router-dom";
 
 const Circus = () => {
-  const { circusSelected } = useContext(Context);
+  const { circusSelected, circusList } = useContext(Context);
   const { cart, setCart } = useContext(Context);
   const [eventData, setEventData] = useState();
 
   //FETCH EVENTS FROM SELECTED CIRCUS
   useEffect(() => {
     // Make a request for a user with a given ID
-    axios
-      .get(`/api/event/${circusSelected}`)
-      .then(function (response) {
-        // handle success
-        setEventData(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-        console.log(eventData);
-      });
+    if (circusSelected) {
+      axios
+        .get(`/api/event/${circusSelected}`)
+        .then(function(response) {
+          // handle success
+          setEventData(response.data);
+        })
+        .catch(function(error) {
+          // handle error
+          console.log(error);
+        })
+        .finally(
+          // always executed
+          console.log(eventData)
+        );
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [circusSelected]);
@@ -38,13 +41,42 @@ const Circus = () => {
     return (
       <Layout>
         <Container fluid>
-          <Table
-
-
-            hover
-            responsive
-
+          <Jumbotron
+            style={{
+              backgroundImage: `url(${
+                circusList.filter(el => el.idcircus === circusSelected)[0].image
+              })`,
+              padding: "0",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              opacity: "0.9"
+            }}
           >
+            <Jumbotron
+              style={{
+                backgroundColor: `rgba(0,0,0,0.7)`
+              }}
+            >
+              <h2>
+                {
+                  circusList.filter(el => el.idcircus === circusSelected)[0]
+                    .name
+                }
+              </h2>
+              <p>
+                {
+                  circusList.filter(el => el.idcircus === circusSelected)[0]
+                    .content
+                }
+              </p>
+              <p>
+                <Link to="/reviews">
+                  <Button variant="outline-info">Lire les avis</Button>
+                </Link>
+              </p>
+            </Jumbotron>
+          </Jumbotron>
+          <Table hover responsive>
             <thead>
               <tr>
                 <th>Date</th>
@@ -52,7 +84,6 @@ const Circus = () => {
                 <th>Places restantes</th>
                 <th>Tarif</th>
                 <th>Quantité</th>
-
               </tr>
             </thead>
             <tbody>
@@ -86,12 +117,13 @@ const Circus = () => {
                       }
                     />
                   </td>
-
                 </tr>
               ))}
             </tbody>
           </Table>
-          <Link to="/cart"><Button variant="primary">Voir mon panier</Button></Link>
+          <Link to="/cart">
+            <Button variant="primary">Voir mon panier</Button>
+          </Link>
         </Container>
       </Layout>
     );

@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Layout from "../layouts/general";
 import Context from "../context";
 import Form from "react-bootstrap/Form";
-import Image from "react-bootstrap/Image"
+import Image from "react-bootstrap/Image";
 
 import axios from "axios";
 
@@ -22,11 +22,11 @@ const History = () => {
     // Make a request for a user with a given ID
     axios
       .get(`/api/history/${connectedUser}`)
-      .then(function (response) {
+      .then(function(response) {
         // handle success
         setHistory(response.data);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         // handle error
         console.log(error);
       });
@@ -43,7 +43,7 @@ const History = () => {
         note: newNote
       })
       .then(res => res.data)
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       })
       .finally(setReload(reload + 1));
@@ -53,32 +53,30 @@ const History = () => {
     return (
       <Layout>
         <Container fluid>
-          <Table
-
-            className="text-white"
-            hover
-            responsive >
+          <Table className="text-white" hover responsive>
             <thead>
-              <tr >
+              <tr>
                 <th style={{ width: "20%" }}>Cirque</th>
                 <th>Nom</th>
                 <th>Date</th>
                 <th>Ville</th>
                 <th>Quantité</th>
                 <th colSpan="2">Votre avis</th>
-
               </tr>
             </thead>
             <tbody>
-              {history.map(product => (
-                <tr key={product.event_idevent}>
+              {history.map((product, index) => (
+                <tr key={index}>
                   <td>
                     <Image
                       fluid
                       className={product.review ? "" : "fullopacity"}
                       src={product.image}
                       alt={product.name}
-                      style={{ border: "1px white dotted", borderRadius: "10px" }}
+                      style={{
+                        border: "1px white dotted",
+                        borderRadius: "10px"
+                      }}
                     ></Image>
                   </td>
                   <td>{product.name}</td>
@@ -89,56 +87,55 @@ const History = () => {
                     {product.review ? (
                       <blockquote className="blockquote ">
                         <p className="review">
-                          {product.review}<br />
+                          {product.review}
+                          <br />
                         </p>
                         <footer className="blockquote-footer text-primary">
-                          <cite>
-                            Note attribuée: {product.note} / 5
-                          </cite>
-                        </footer></blockquote>
+                          <cite>Note attribuée: {product.note} / 5</cite>
+                        </footer>
+                      </blockquote>
                     ) : (
-                        <Form
-                          noValidate
-                          id={product.event_idevent}
-                          onSubmit={handleSubmit}
+                      <Form
+                        noValidate
+                        id={product.event_idevent}
+                        onSubmit={handleSubmit}
+                      >
+                        <Form.Control
+                          as="textarea"
+                          required
+                          placeholder="Ajouter un avis"
+                          onChange={e => setNewReview(e.target.value)}
+                          style={{ marginBottom: "5px" }}
+                        />
 
-
+                        <Form.Control
+                          placeholder="Note"
+                          className="float-left"
+                          required
+                          as="select"
+                          onChange={e => setNewNote(e.target.value[0])}
+                          style={{ display: "inline-block", width: "auto" }}
                         >
-                          <Form.Control
-                            as="textarea"
-                            required
-                            placeholder="Ajouter un avis"
-                            onChange={e => setNewReview(e.target.value)}
-                            style={{ marginBottom: "5px" }}
-                          />
+                          <option>5 - Excellent</option>
+                          <option>4 - Génial</option>
+                          <option>3 - Sympa</option>
+                          <option>2 - Pas mal</option>
+                          <option>1 - Bof</option>
+                          <option>0 - Nul</option>
+                        </Form.Control>
 
-
-                          <Form.Control
-                            placeholder="Note"
-                            className="float-left"
-                            required
-                            as="select"
-                            onChange={e => setNewNote(e.target.value[0])}
-                            style={{ display: "inline-block", width: "auto", }}
-                          >
-                            <option>5 - Excellent</option>
-                            <option>4 - Génial</option>
-                            <option>3 - Sympa</option>
-                            <option>2 - Pas mal</option>
-                            <option>1 - Bof</option>
-                            <option>0 - Nul</option>
-                          </Form.Control>
-
-                          <Button className="float-right" type="submit">Ajouter</Button>
-                        </Form>
-                      )}
+                        <Button className="float-right" type="submit">
+                          Ajouter
+                        </Button>
+                      </Form>
+                    )}
                   </td>
                 </tr>
               ))}
             </tbody>
           </Table>
         </Container>
-      </Layout >
+      </Layout>
     );
   } else {
     return <Layout></Layout>;

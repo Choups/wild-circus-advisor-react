@@ -64,8 +64,14 @@ const Signup = () => {
             </Card.Body>
           </Card>
         </CardDeck>
-      </Row><Link to="/signup">
-        <Button style={{ position: "absolute", bottom: "10px", left: "10px" }} variant="outline-warning">Retour</Button>
+      </Row>
+      <Link to="/">
+        <Button
+          style={{ position: "absolute", bottom: "10px", left: "10px" }}
+          variant="outline-warning"
+        >
+          Retour
+        </Button>
       </Link>
     </Container>
   );
