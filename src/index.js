@@ -11,7 +11,7 @@ import ParticlesBg from 'particles-bg'
 ReactDOM.render(
 
   <div>
-    <App /><ParticlesBg num={200} type="circle" bg={true} /></div>
+    <App /><ParticlesBg num={200} type="circle" bg={true} style={{ maxHeight: "100vh" }} /></div>
   ,
   document.getElementById("root")
 );

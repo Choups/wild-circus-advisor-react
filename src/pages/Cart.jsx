@@ -6,6 +6,7 @@ import Layout from "../layouts/general";
 import Context from "../context/";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
+import Card from "react-bootstrap/Card"
 
 const Cart = () => {
   const { cart, setCart, connectedUser } = useContext(Context);
@@ -64,11 +65,13 @@ const Cart = () => {
                   <td>{product.circus}</td>
                   <td>{product.date.substring(0, 10)}</td>
                   <td>{product.city}</td>
-                  <td>{product.price} €</td>
-                  <td>- {product.quantity} + OK </td>
+                  <td>{Number.parseFloat(product.price).toFixed(2)} €</td>
+
                   <td>
                     <Form.Control
                       type="number"
+                      style={{ width: "100px", margin: "auto" }}
+                      min="0"
                       id={product.idevent}
                       value={product.quantity}
                       placeholder="0"
@@ -89,28 +92,39 @@ const Cart = () => {
                       }
                     />
                   </td>
-                  <td>{product.quantity * product.price} €</td>
+                  <td>{Number.parseFloat(product.quantity * product.price).toFixed(2)} €</td>
                 </tr>
               ))}
             </tbody>
           </Table>
-          <Table hover responsive>
-            <thead>
-              <tr>
-                <th>Total</th>
-                <th>Taxes</th>
-                <th>Total à payer</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{subTotal} €</td>
-                <td>{(subTotal * 5) / 100} €</td>
-                <td>{subTotal + (subTotal * 5) / 100} €</td>
-              </tr>
-            </tbody>
-          </Table>
-          <Button onClick={() => buy()}>Valider le paiement</Button>
+
+
+
+
+
+          <Card style={{ maxWidth: "250px", backgroundColor: "rgba(255,255,255,0.1)", border: "none", marginLeft: "auto" }} >
+
+            <Card.Header className="d-flex justify-content-center align-items-center text-white" style={{ border: "none" }}>
+              <p>Récapitulatif</p>
+            </Card.Header>
+            <Card.Body className="transcard" style={{ textAlign: "center" }}>
+
+              <p>total: <span className="dotfacture">..................</span> {Number.parseFloat(subTotal).toFixed(2)} €</p>
+              <p>taxes: <span className="dotfacture">..................</span> {Number.parseFloat((subTotal * 5) / 100).toFixed(2)} €</p>
+              <p>total à payer: <span className="dotfacture">......</span>{Number.parseFloat(subTotal + (subTotal * 5) / 100).toFixed(2)} €</p>
+              <Button onClick={() => buy()}>Valider le paiement</Button>
+
+
+            </Card.Body>
+
+          </Card>
+
+
+
+
+
+
+
         </Container>
       </Layout>
     );

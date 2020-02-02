@@ -5,6 +5,7 @@ import Layout from "../layouts/general";
 import axios from "axios";
 import Context from "../context/";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button"
 import { Link } from "react-router-dom";
 
 const Circus = () => {
@@ -38,9 +39,8 @@ const Circus = () => {
       <Layout>
         <Container fluid>
           <Table
-            striped
-            variant="light"
-            bordered
+
+
             hover
             responsive
 
@@ -52,19 +52,21 @@ const Circus = () => {
                 <th>Places restantes</th>
                 <th>Tarif</th>
                 <th>Quantité</th>
-                <th>Actions</th>
+
               </tr>
             </thead>
             <tbody>
               {eventData.map(data => (
                 <tr key={data.idevent}>
-                  <td>{data.date}</td>
+                  <td>{data.date.substring(0, 10)}</td>
                   <td>{data.city}</td>
                   <td>{data.slots}</td>
-                  <td>{data.price}</td>
+                  <td>{Number.parseFloat(data.price).toFixed(2)} €</td>
                   <td>
                     <Form.Control
+                      style={{ width: "100px", margin: "auto" }}
                       type="number"
+                      min="0"
                       id={data.idevent}
                       placeholder="0"
                       onChange={e =>
@@ -84,12 +86,12 @@ const Circus = () => {
                       }
                     />
                   </td>
-                  <td>O X I</td>
+
                 </tr>
               ))}
             </tbody>
           </Table>
-          <Link to="/cart">panier</Link>
+          <Link to="/cart"><Button variant="primary">Voir mon panier</Button></Link>
         </Container>
       </Layout>
     );

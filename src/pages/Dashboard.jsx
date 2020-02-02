@@ -23,11 +23,11 @@ const Dashboard = () => {
       })
       .catch(function (error) {
         // handle error
-        console.log(error);
+
       })
       .then(function () {
         // always executed
-        console.log(circusList);
+
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -38,25 +38,30 @@ const Dashboard = () => {
       <Layout>
         <Container
           fluid
+          className="dashboard"
           style={{
             display: "flex",
-            flexWrap: "wrap"
+            flexWrap: "wrap",
+            justifyContent: "space-evenly"
+
+
           }}
         >
           {circusList.map(circus => (
             <Card
-              className="transcard"
+              className="transcard adaptsize"
               key={circus.idcircus}
-              style={{ width: "22rem", margin: "0px auto 20px auto" }}
+              style={{ width: "17rem", margin: "0px 10px 20px 10px" }}
             >
               <Card.Img
                 variant="top"
+                className="dashpic"
                 src={circus.image}
-                style={{ height: "200px" }}
+                style={{ height: "auto" }}
               />
               <Card.Body className="d-flex flex-column justify-content-between ">
                 <Card.Title>{circus.name}</Card.Title>
-                <Card.Text>{circus.content}</Card.Text>
+                <Card.Text className="text-dark">{circus.content}</Card.Text>
                 <Row noGutters className="d-flex justify-content-between">
                   <Link
                     to="/circus"

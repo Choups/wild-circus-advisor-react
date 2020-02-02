@@ -12,6 +12,7 @@ import Circus from "./pages/Circus";
 import Cart from "./pages/Cart";
 import History from "./pages/History";
 import Reviews from "./pages/Reviews";
+import "./App.css"
 
 const App = () => {
   const [connectedUser, setConnectedUser] = useState();
@@ -22,9 +23,10 @@ const App = () => {
   const [history, setHistory] = useState();
   const [reload, setReload] = useState(1);
   const [dataList, setDataList] = useState();
+  const [animation, setAnimation] = useState(true);
 
   return (
-    <div>
+    <div className="App">
       <Context.Provider
         value={{
           connectedUser,
@@ -42,7 +44,7 @@ const App = () => {
           reload,
           setReload,
           dataList,
-          setDataList
+          setDataList, animation, setAnimation
         }}
       >
         <BrowserRouter>

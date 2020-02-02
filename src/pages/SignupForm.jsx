@@ -37,7 +37,7 @@ const SignupForm = props => {
   };
 
   return (
-    <Container className="fluid d-flex flex-column justify-content-around fullHeight">
+    <Container className="fluid d-flex flex-column justify-content-around fullHeight" style={{ maxWidth: "500px" }}>
       <Row className="d-flex justify-content-center">
         <h2>Vos informations</h2>
       </Row>
@@ -46,14 +46,6 @@ const SignupForm = props => {
         className="fluid d-flex flex-column justify-content-center text-white "
       >
         <Form.Row>
-          <Form.Group as={Col} controlId="formGridLastName">
-            <Form.Label>Nom</Form.Label>
-            <Form.Control
-              name="lastname"
-              onChange={updateForm}
-              placeholder="Votre nom..."
-            />
-          </Form.Group>
 
           <Form.Group as={Col} controlId="formGridFirstName">
             <Form.Label>Prénom</Form.Label>
@@ -63,6 +55,16 @@ const SignupForm = props => {
               placeholder="Votre prénom..."
             />
           </Form.Group>
+          <Form.Group as={Col} controlId="formGridLastName">
+            <Form.Label>Nom</Form.Label>
+            <Form.Control
+              name="lastname"
+              onChange={updateForm}
+              placeholder="Votre nom..."
+            />
+          </Form.Group>
+
+
         </Form.Row>
 
         <Form.Group controlId="formGridEmail">
@@ -82,7 +84,7 @@ const SignupForm = props => {
               name="password"
               onChange={updateForm}
               type="password"
-              placeholder="choisissez un mot de passe sécurisé"
+              placeholder="choisissez un mot de passe"
             />
           </Form.Group>
 
@@ -94,12 +96,12 @@ const SignupForm = props => {
             />
           </Form.Group>
         </Form.Row>
-        <Form.Row>
+        <Form.Row >
           <Link to="/signup">
-            <Button variant="primary">Retour</Button>
+            <Button style={{ marginLeft: "5px" }} variant="outline-warning">Retour</Button>
           </Link>
-          <Button variant="primary" type="submit">
-            Submit
+          <Button style={{ marginLeft: "auto", marginRight: "5px" }} variant="success" type="submit">
+            Envoyer
           </Button>
         </Form.Row>
       </Form>

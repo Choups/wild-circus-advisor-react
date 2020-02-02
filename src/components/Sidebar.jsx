@@ -30,7 +30,7 @@ const Sidebar = () => {
   if (dataList) {
     const MakeSomeStars = index => {
       switch (dataList[index].note) {
-        case "Excellent":
+        case "5":
           return (
             <div>
               <IoIosHeart />
@@ -40,7 +40,7 @@ const Sidebar = () => {
               <IoIosHeart />
             </div>
           );
-        case "Génial":
+        case "4":
           return (
             <div>
               <IoIosHeart />
@@ -49,7 +49,7 @@ const Sidebar = () => {
               <IoIosHeart />
             </div>
           );
-        case "Sympa":
+        case "3":
           return (
             <div>
               <IoIosHeart />
@@ -57,24 +57,22 @@ const Sidebar = () => {
               <IoIosHeart />
             </div>
           );
-        case "Pas mal":
+        case "2":
           return (
             <div>
               <IoIosHeart />
               <IoIosHeart />
             </div>
           );
-        case "Bof":
+        case "1":
           return (
             <div>
               <IoIosHeart />
             </div>
           );
-        case "Nul":
+        case "0":
           return (
-            <div>
-              <FaRegSadTear />
-              <FaRegSadTear />
+            <div className="text-danger bold">
               <FaRegSadTear />
             </div>
           );
@@ -93,21 +91,21 @@ const Sidebar = () => {
               onClick={() => setCircusSelected(review.idcircus)}
 
             >
-              <Card.Header className="d-flex justify-content-between align-items-center text-white" style={{ border: "none" }}>
-                <div>{review.name}</div>
-                <div>{MakeSomeStars(index)}</div>
-                <img
+              <Card.Header className="d-flex justify-content-between align-items-center text-secondary" style={{ border: "none" }}>
+                <div><img
                   src={review.image}
                   alt={review.name}
-                  style={{ height: "35px", width: "35px", borderRadius: "50%", }}
-                />
+                  style={{ height: "35px", width: "35px", borderRadius: "50%", marginRight: "10px" }}
+                />{review.name}</div>
+                <div className="ratings">{MakeSomeStars(index)}</div>
+
               </Card.Header>
               <Card.Body className="transcard">
                 <blockquote className="blockquote mb-0">
                   <p>{review.review}</p>
                   <footer className="blockquote-footer">
                     <cite>
-                      le {review.date} à {review.city} par{" "}
+                      le {review.date.substring(0, 10)} à {review.city} par{" "}
                       <span style={{ fontWeight: "bold" }}>
                         {review.firstname} {review.lastname}
                       </span>

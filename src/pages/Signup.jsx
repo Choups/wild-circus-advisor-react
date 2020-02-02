@@ -20,7 +20,7 @@ const Signup = () => {
             style={{
               width: "22rem",
               backgroundColor: "rgba(0,0,0,0.4)",
-              marginRight: "10vw"
+              marginRight: "5vw"
             }}
             className="text-white"
           >
@@ -44,7 +44,7 @@ const Signup = () => {
             style={{
               width: "22rem",
               backgroundColor: "rgba(0,0,0,0.4)",
-              marginLeft: "10vw"
+              marginLeft: "5vw"
             }}
             className="text-white"
           >
@@ -64,7 +64,9 @@ const Signup = () => {
             </Card.Body>
           </Card>
         </CardDeck>
-      </Row>
+      </Row><Link to="/signup">
+        <Button style={{ position: "absolute", bottom: "10px", left: "10px" }} variant="outline-warning">Retour</Button>
+      </Link>
     </Container>
   );
 };

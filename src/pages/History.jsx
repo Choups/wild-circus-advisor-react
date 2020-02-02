@@ -15,7 +15,7 @@ const History = () => {
   );
   const [newReview, setNewReview] = useState();
 
-  const [newNote, setNewNote] = useState("Génial");
+  const [newNote, setNewNote] = useState("5");
 
   //FETCH ALL CIRCUS
   useEffect(() => {
@@ -55,7 +55,7 @@ const History = () => {
         <Container fluid>
           <Table
 
-
+            className="text-white"
             hover
             responsive >
             <thead>
@@ -75,9 +75,10 @@ const History = () => {
                   <td>
                     <Image
                       fluid
-                      thumbnail
+                      className={product.review ? "" : "fullopacity"}
                       src={product.image}
                       alt={product.name}
+                      style={{ border: "1px white dotted", borderRadius: "10px" }}
                     ></Image>
                   </td>
                   <td>{product.name}</td>
@@ -87,12 +88,12 @@ const History = () => {
                   <td colSpan="2">
                     {product.review ? (
                       <blockquote className="blockquote ">
-                        <p>
+                        <p className="review">
                           {product.review}<br />
                         </p>
-                        <footer className="blockquote-footer">
+                        <footer className="blockquote-footer text-primary">
                           <cite>
-                            {product.note}
+                            Note attribuée: {product.note} / 5
                           </cite>
                         </footer></blockquote>
                     ) : (
@@ -108,20 +109,24 @@ const History = () => {
                             required
                             placeholder="Ajouter un avis"
                             onChange={e => setNewReview(e.target.value)}
+                            style={{ marginBottom: "5px" }}
                           />
-                          <br />
-                          <Form.Label>Note</Form.Label>{" "}
+
+
                           <Form.Control
+                            placeholder="Note"
+                            className="float-left"
                             required
                             as="select"
-                            onChange={e => setNewNote(e.target.value)}
-                            style={{ display: "inline-block", width: "auto" }}
+                            onChange={e => setNewNote(e.target.value[0])}
+                            style={{ display: "inline-block", width: "auto", }}
                           >
-                            <option>Génial</option>
-                            <option>Sympa</option>
-                            <option>Pas mal</option>
-                            <option>Bof</option>
-                            <option>Nul</option>
+                            <option>5 - Excellent</option>
+                            <option>4 - Génial</option>
+                            <option>3 - Sympa</option>
+                            <option>2 - Pas mal</option>
+                            <option>1 - Bof</option>
+                            <option>0 - Nul</option>
                           </Form.Control>
 
                           <Button className="float-right" type="submit">Ajouter</Button>

@@ -22,10 +22,10 @@ const Login = props => {
       })
       .then(res => res.data)
       .then(data => localStorage.setItem("token", data))
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       })
-      .finally(function() {
+      .finally(function () {
         props.history.push("/dashboard");
       });
   };
@@ -41,7 +41,7 @@ const Login = props => {
               placeholder="Entrez votre email"
               onChange={e => setLogin({ ...login, email: e.target.value })}
             />
-            <Form.Text className="text-muted">
+            <Form.Text className="text-grey">
               Vos données restent strictement confidentielles.
             </Form.Text>
           </Form.Group>

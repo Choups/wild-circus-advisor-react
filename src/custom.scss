@@ -3,16 +3,70 @@
 /*! `Custom` Bootstrap 4 theme */
 
 
-
+$body-color: white;
 $primary:#873f9a;
-$secondary:#c97c7d;
+$secondary:#0e388b;
 $link-hover-decoration:none;
+$blockquote-font-size: 1rem;
 // $card-border-radius:0.6rem;
+
+h1 {
+  font-size: calc(3rem + 2vw) !important;
+  text-shadow:#873f9a 3px 0px 0px, #873f9a 0.540302px 0.841471px 0px, #873f9a -0.416147px 0.909297px 0px, #873f9a -0.989993px 0.14112px 0px, #873f9a -0.653644px -0.756803px 0px, #873f9a 0.283662px -0.958924px 0px, #873f9a 0.96017px -0.279416px 0px !important;
+  color:white !important;
+}
+
+.navshad {
+  box-shadow: 0 5px 15px -2px black;
+}
+
+.social {
+  font-size: 2rem;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  color:#873f9a;
+}
+
+.hovernav {
+  color: #768ba5 !important;
+  margin: 0px 10px;
+}
+
+.hovernav:hover {
+  color: #873f9a !important;
+  transition-duration: 0.5s;
+}
 
 table, td, th, tr, thead, tbody {
   border: 0 !important;
+
+  
   
 }
+
+
+
+td,th {
+  text-align: center !important;
+  vertical-align: middle !important;
+  
+}
+
+tr:hover {
+  img {
+    opacity: 1;
+  }
+}
+
+
+tr img {
+  opacity: 0.6;
+}
+.fullopacity {
+  opacity: 1;
+}
+
 
 table {
   margin-top: -15px;
@@ -25,18 +79,60 @@ thead {
 }
 
 tbody {
-  background-color: rgba(255,255,255,0.8) !important;
+  background-color: rgba(255,255,255,0.3) !important;
+}
+
+@media only screen and (max-width: 1811px) {
+  .adaptsize {
+      width: 19rem !important;
+  }
+}
+
+@media only screen and (min-width: 1811px) {
+  
+.dashpic {
+  height: 180px !important;
+}
 }
 
 
+
+@media only screen and (min-width: 1356px) {
+  .dashpic {
+      height: 170px !important;
+  }
+  
+
+}
+
+@media only screen and (max-width: 1355px) {
+  .adaptsize {
+      width: 100% !important;
+  }
+  
+
+}
+
+
+
 .transcard {
-  background-color: rgba(255,255,255,0.8) !important;
+  background-color: rgba(255,255,255,0.3) !important;
   // border-radius: 0.6rem !important;
   border: none !important;
 }
 
+.transcard img {
+  opacity: 0.8;
+}
+
+.transcard:hover {
+  img {
+    opacity: 1;
+  }
+}
+
 .blockquote {
-  font-size: 6px;
+  color: white !important
 }
 
 .fullHeight {
@@ -45,8 +141,137 @@ tbody {
 .scrollhide {
   scrollbar-width: none;
 }
+* {
+  scrollbar-width: none;
+}
+
+
 .scrollhide::-webkit-scrollbar {
   display: none;
+}
+
+.review {
+  color:#444;
+}
+
+.blockquote-footer {
+  color: #444 !important;
+}
+
+.ratings {
+  opacity: 0.8;
+  color: #c97c7d;
+}
+
+.titre {
+  color: #873f9a !important;
+}
+
+.titre:hover {
+  color: #c97c7d !important;
+}
+
+.dotfacture {
+  color: rgba(255,255,255,0);
+}
+
+.carouselimg {
+  width: 100%;
+  height: 30vh;
+  margin: 0px 15px 15px 15px;
+
+}
+
+.nav-anim {
+  opacity: 0;
+  transform: translateY(-100vh);
+  animation: navanim ease 1s forwards ;
+
+}
+
+@keyframes navanim {
+  from{
+    transform: translateY(-100vh);
+  }
+
+  30%{
+    transform: translateY(-100vh);
+opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.first-anim {
+  opacity: 0;
+  transform: translateY(-100vh);
+  animation: first ease 2s forwards ;
+  animation-delay: 2s;
+}
+
+@keyframes first {
+  from{
+    transform: translateY(-100vh);
+  }
+
+  30%{
+    transform: translateY(-100vh);
+opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.second-anim {
+  opacity: 0;
+  transform: translateY(-100vh);
+  animation: second ease 2s forwards ;
+  animation-delay: 2s;
+}
+
+@keyframes second {
+  from{
+    transform: translateY(-100vh);
+  }
+
+  30%{
+    transform: translateY(-100vh);
+opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.third-anim {
+  opacity: 0;
+  animation: third ease 2s forwards ;
+  animation-delay: 4s;
+}
+
+@keyframes third {
+  30%{
+    
+    transform: scale(0);
+    opacity: 0;
+  
+  }
+
+  to {
+  
+   
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 // Import Bootstrap and its default variables

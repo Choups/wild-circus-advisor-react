@@ -9,9 +9,12 @@ import Badge from "react-bootstrap/Badge";
 import Context from "../context/";
 import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
+import { AiOutlineFacebook } from "react-icons/ai";
+import { AiOutlineGithub } from "react-icons/ai";
+import { AiOutlineInstagram } from "react-icons/ai"
 
 const NavbarComp = () => {
-  const { who, setWho, cart, connectedUser } = useContext(Context);
+  const { who, setWho, cart, connectedUser, animation } = useContext(Context);
 
   //FETCH REVIEWS FROM SELECTED CIRCUS
   useEffect(() => {
@@ -32,27 +35,27 @@ const NavbarComp = () => {
 
   if (connectedUser && who) {
     return (
-      <Navbar fixed="top" expand="lg" bg="light" variant="light">
-        <Navbar.Brand as={Link} to="/" style={{ width: "23.5%" }}>
+      <Navbar fixed="top" expand="lg" style={{ backgroundColor: "black" }} variant="dark" className={animation ? "scrollhide nav-anim navshad" : "navshad"}>
+        <Navbar.Brand as={Link} to="/" style={{ width: "25%" }} className="titre">
           <img
             alt=""
             src={logo}
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
+            width="35"
+            height="35"
+            className="d-inline-block align-middle"
           />{" "}
-          Wild Circus Advisor
+          <span className="d-inline-block align-middle"> Wild Circus Advisor</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/dashboard" >
+            <Nav.Link as={Link} to="/dashboard" className="hovernav" >
               Réserver un spectacle
             </Nav.Link>
-            <Nav.Link as={Link} to="/history">
+            <Nav.Link as={Link} to="/history" className="hovernav">
               Mon historique
             </Nav.Link>
-            <Nav.Link as={Link} to="/cart">
+            <Nav.Link as={Link} to="/cart" className="hovernav">
               Panier{" "}
               {Object.keys(cart).length > 0 && (
                 <Badge
@@ -64,23 +67,19 @@ const NavbarComp = () => {
               )}
             </Nav.Link>
           </Nav>
-          <Form inline>
-            <FormControl
-              type="text"
-              placeholder="Rechercher"
-              className="mr-sm-2"
-            />
-          </Form>
+          <AiOutlineInstagram className="social" />
+          <AiOutlineGithub className="social" />
+          <AiOutlineFacebook className="social" />
           <Dropdown>
             <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
               Bonjour {who.firstname}
             </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item href="/">Déconnexion</Dropdown.Item>
+            <Dropdown.Menu >
+              <Dropdown.Item href=" /">Déconnexion</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </Navbar.Collapse>
-      </Navbar>
+      </Navbar >
     );
   } else {
     return <div></div>;
