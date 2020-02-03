@@ -9,6 +9,11 @@ $link-hover-decoration: none;
 $blockquote-font-size: 1rem;
 // $card-border-radius:0.6rem;
 
+.signup {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+
 h1 {
   font-size: calc(3rem + 2vw) !important;
   text-shadow: #873f9a 3px 0px 0px, #873f9a 0.540302px 0.841471px 0px,
@@ -16,6 +21,23 @@ h1 {
     #873f9a -0.653644px -0.756803px 0px, #873f9a 0.283662px -0.958924px 0px,
     #873f9a 0.96017px -0.279416px 0px !important;
   color: white !important;
+  font-family: "Galada", cursive !important;
+}
+
+.padlog {
+  padding-bottom: 4px;
+  transform: scale(1.4);
+  margin-right: 10px;
+}
+
+.navtitre {
+  text-shadow: #873f9a 2px 0px 0px, #873f9a 0.540302px 0.841471px 0px,
+    #873f9a -0.416147px 0.909297px 0px, #873f9a -0.989993px 0.14112px 0px,
+    #873f9a -0.653644px -0.756803px 0px, #873f9a 0.283662px -0.958924px 0px,
+    #873f9a 0.96017px -0.279416px 0px !important;
+  color: white !important;
+  font-family: "Galada", cursive !important;
+  vertical-align: middle;
 }
 
 .jumbotext {
@@ -28,16 +50,31 @@ h1 {
 
 .rightchat {
   margin-left: auto;
+  transition-duration: 1s;
+}
+
+.rightchat:hover {
+  transform: translateX(-25%);
+}
+
+.popAnim {
+  transform: scale(1.2) !important;
+  transition-duration: 0.5s !important;
 }
 
 .leftchat {
   margin-right: auto;
+  transition-duration: 1s;
 }
 
 .chatcard {
   background-color: rgba(0, 0, 0, 0.3) !important;
-  // border-radius: 0.6rem !important;
+  transition-duration: 0.5s !important;
   border: none !important;
+}
+
+.chatcard:hover {
+  background-color: rgba(0, 0, 0, 0.6) !important;
 }
 
 .social {
@@ -46,10 +83,17 @@ h1 {
   margin-bottom: 5px;
   margin-top: 5px;
   color: #873f9a;
+  transition-duration: 0.5s;
+}
+
+.social:hover {
+  cursor: pointer;
+  color: white;
+  transform: rotate(360deg);
 }
 
 .hovernav {
-  color: #768ba5 !important;
+  color: #a1b6d1 !important;
   margin: 0px 10px;
 }
 
@@ -128,6 +172,22 @@ tbody {
   background-color: rgba(255, 255, 255, 0.3) !important;
   // border-radius: 0.6rem !important;
   border: none !important;
+  transition-duration: 0.5s;
+}
+
+.transcard2 {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  // border-radius: 0.6rem !important;
+  border: none !important;
+  transition-duration: 0.5s;
+}
+
+.transcard2:hover {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+
+  .blockquote-footer {
+    color: #222 !important;
+  }
 }
 
 .transcard img {
@@ -137,6 +197,28 @@ tbody {
 .transcard:hover {
   img {
     opacity: 1;
+  }
+  transform: scale(1.03);
+  p {
+    color: #111 !important;
+  }
+}
+
+.reviewcard {
+  border-bottom: dotted 1px lightgrey;
+  width: auto !important;
+  display: flex !important;
+  justify-content: space-between;
+  transition-duration: 0.5s;
+}
+.reviewcard:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  .ratings {
+    color: black;
+  }
+
+  .blockquote-footer {
+    color: #222 !important;
   }
 }
 
@@ -159,11 +241,11 @@ tbody {
 }
 
 .review {
-  color: #444;
+  color: rgb(188, 209, 219);
 }
 
 .blockquote-footer {
-  color: #444 !important;
+  color: rgb(188, 209, 219) !important;
 }
 
 .ratings {

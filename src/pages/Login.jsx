@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Context from "../context/"
 
 const Login = props => {
   const [login, setLogin] = useState({
     email: "test@test.com",
     password: 12345
   });
+  const { setAnimation } = useContext(Context);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -26,6 +28,7 @@ const Login = props => {
         console.log(error);
       })
       .finally(function () {
+        setAnimation(true);
         props.history.push("/dashboard");
       });
   };

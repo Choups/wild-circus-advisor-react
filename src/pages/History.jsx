@@ -95,17 +95,17 @@ const History = () => {
                         </footer>
                       </blockquote>
                     ) : (
-                      <Form
-                        noValidate
-                        id={product.event_idevent}
-                        onSubmit={handleSubmit}
-                      >
+                      <Form id={product.event_idevent} onSubmit={handleSubmit}>
                         <Form.Control
                           as="textarea"
                           required
                           placeholder="Ajouter un avis"
                           onChange={e => setNewReview(e.target.value)}
-                          style={{ marginBottom: "5px" }}
+                          style={{
+                            marginBottom: "5px",
+                            backgroundColor: "rgba(0,0,0,0.2)",
+                            color: "white"
+                          }}
                         />
 
                         <Form.Control
@@ -114,7 +114,12 @@ const History = () => {
                           required
                           as="select"
                           onChange={e => setNewNote(e.target.value[0])}
-                          style={{ display: "inline-block", width: "auto" }}
+                          style={{
+                            display: "inline-block",
+                            width: "auto",
+                            backgroundColor: "rgba(0,0,0,0.2)",
+                            color: "white"
+                          }}
                         >
                           <option>5 - Excellent</option>
                           <option>4 - Génial</option>

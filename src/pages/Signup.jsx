@@ -22,7 +22,7 @@ const Signup = () => {
               backgroundColor: "rgba(0,0,0,0.4)",
               marginRight: "5vw"
             }}
-            className="text-white"
+            className="text-white signup"
           >
             <Card.Img
               variant="top"
@@ -46,7 +46,7 @@ const Signup = () => {
               backgroundColor: "rgba(0,0,0,0.4)",
               marginLeft: "5vw"
             }}
-            className="text-white"
+            className="text-white signup"
           >
             <Card.Img
               variant="top"

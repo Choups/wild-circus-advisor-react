@@ -8,7 +8,7 @@ import Context from "../context/";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
-  const { dataList, setDataList, setCircusSelected } = useContext(Context);
+  const { dataList, setDataList, setCircusSelected, reviewLength, setReviewLength, popAnim, setPopAnim } = useContext(Context);
   const { reload } = useContext(Context);
 
   //FETCH REVIEWS FROM SELECTED CIRCUS
@@ -18,14 +18,28 @@ const Sidebar = () => {
       .then(function (response) {
         // handle success
         setDataList(response.data);
+        if (reviewLength < response.data.length) {
+          setPopAnim(true)
+          setReviewLength(response.data.length)
+        }
+
       })
       .catch(function (error) {
         // handle error
         console.log(error);
-      });
+      }).finally(
+
+        setTimeout(() => {
+          !popAnim &&
+            setPopAnim(false)
+        }, 2000)
+
+      );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reload]);
+
+
 
   if (dataList) {
     const MakeSomeStars = index => {
@@ -85,7 +99,7 @@ const Sidebar = () => {
     return (
       <Container>
         {dataList.map((review, index) => (
-          <Card key={index} style={{ marginBottom: "20px", backgroundColor: "rgba(255,255,255,0.1)", border: "none" }} >
+          <Card className={popAnim ? "popAnim" : ""} key={index} style={{ marginBottom: "20px", backgroundColor: "rgba(255,255,255,0.1)", border: "none" }} >
             <Link
               to="/circus"
               onClick={() => setCircusSelected(review.idcircus)}
@@ -100,7 +114,7 @@ const Sidebar = () => {
                 <div className="ratings">{MakeSomeStars(index)}</div>
 
               </Card.Header>
-              <Card.Body className="transcard">
+              <Card.Body className="transcard2">
                 <blockquote className="blockquote mb-0">
                   <p>{review.review}</p>
                   <footer className="blockquote-footer">

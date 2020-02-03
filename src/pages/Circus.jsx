@@ -20,11 +20,13 @@ const Circus = () => {
     if (circusSelected) {
       axios
         .get(`/api/event/${circusSelected}`)
-        .then(function(response) {
+        .then(function (response) {
           // handle success
-          setEventData(response.data);
+          if (response.data[0].date) {
+            setEventData(response.data);
+          }
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // handle error
           console.log(error);
         })
@@ -37,7 +39,7 @@ const Circus = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [circusSelected]);
 
-  if (eventData) {
+  if (circusSelected && eventData) {
     return (
       <Layout>
         <Container fluid>
@@ -45,7 +47,7 @@ const Circus = () => {
             style={{
               backgroundImage: `url(${
                 circusList.filter(el => el.idcircus === circusSelected)[0].image
-              })`,
+                })`,
               padding: "0",
               backgroundPosition: "center",
               backgroundSize: "cover",
@@ -121,11 +123,80 @@ const Circus = () => {
               ))}
             </tbody>
           </Table>
+          <Link to="/dashboard">
+            <Button variant="outline-warning" style={{ marginBottom: "20px", marginRight: "20px" }}>Retour</Button>
+          </Link>
           <Link to="/cart">
-            <Button variant="primary">Voir mon panier</Button>
+            <Button variant="primary" style={{ marginBottom: "20px", marginRight: "20px" }}>Voir mon panier</Button>
           </Link>
         </Container>
       </Layout>
+    );
+  } else if (circusSelected) {
+    return (
+      <Layout>
+        <Container fluid>
+          <Jumbotron
+            style={{
+              backgroundImage: `url(${
+                circusList.filter(el => el.idcircus === circusSelected)[0].image
+                })`,
+              padding: "0",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              opacity: "0.9"
+            }}
+          >
+            <Jumbotron
+              style={{
+                backgroundColor: `rgba(0,0,0,0.7)`
+              }}
+            >
+              <h2>
+                {
+                  circusList.filter(el => el.idcircus === circusSelected)[0]
+                    .name
+                }
+              </h2>
+              <p>
+                {
+                  circusList.filter(el => el.idcircus === circusSelected)[0]
+                    .content
+                }
+              </p>
+              <p>
+                <Link to="/reviews">
+                  <Button variant="outline-info">Lire les avis</Button>
+                </Link>
+              </p>
+            </Jumbotron>
+          </Jumbotron>
+          <Table hover responsive>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Ville</th>
+                <th>Places restantes</th>
+                <th>Tarif</th>
+                <th>Quantité</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colSpan="5">
+                  Ce cirque n'a aucun évènement programmé à l'heure actuelle.
+                </td>
+              </tr>
+            </tbody>
+          </Table>
+          <Link to="/dashboard">
+            <Button variant="outline-warning" style={{ marginBottom: "20px", marginRight: "20px", marginTop: "20px" }} >Retour</Button>
+          </Link>
+          <Link to="/cart">
+            <Button variant="primary" style={{ marginBottom: "20px", marginTop: "20px" }}>Voir mon panier</Button>
+          </Link>
+        </Container>
+      </Layout >
     );
   } else {
     return (

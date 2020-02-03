@@ -17,7 +17,9 @@ const Chat = () => {
     setLoading,
     setReload,
     newMsg,
-    setNewMsg
+    setNewMsg,
+    antispam,
+    setAntispam
   } = useContext(Context);
 
   const ref = useRef();
@@ -48,23 +50,34 @@ const Chat = () => {
   }, [loading, reload]);
 
   const handleSubmit = () => {
-    setLoading(true);
-    axios
-      .post("/api/chat", {
-        name: who.firstname,
-        message: newMsg
-      })
-      .then(res => res.data)
-      .catch(function(error) {
-        console.log(error);
-      })
-      .finally(function() {
-        setTimeout(() => {
-          setReload(reload + 1);
-          setLoading(false);
-        }, 500);
-      });
+    if (newMsg !== "") {
+      setLoading(true);
+      axios
+        .post("/api/chat", {
+          name: who.firstname,
+          message: newMsg
+        })
+        .then(res => res.data)
+        .catch(function(error) {
+          console.log(error);
+        })
+        .finally(function() {
+          setTimeout(() => {
+            setAntispam(Date());
+            setReload(reload + 1);
+            setLoading(false);
+            setNewMsg("");
+          }, 500);
+        });
+    }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setReload(reload + 1);
+      console.log("chat refresh");
+    }, 5000);
+  }, [reload, setReload]);
 
   if (chat && who) {
     return (
@@ -113,6 +126,7 @@ const Chat = () => {
           <Form.Control
             as="textarea"
             required
+            defaultValue={newMsg}
             placeholder="Postez un message"
             value={newMsg}
             onChange={e => setNewMsg(e.target.value)}

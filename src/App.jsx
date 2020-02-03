@@ -27,6 +27,10 @@ const App = () => {
   const [chat, setChat] = useState();
   const [loading, setLoading] = useState(false);
   const [newMsg, setNewMsg] = useState();
+  const [reviewLength, setReviewLength] = useState(0);
+  const [popAnim, setPopAnim] = useState();
+  const [antispam, setAntispam] = useState();
+  const [newHist, setNewHist] = useState(false);
 
   return (
     <div className="App">
@@ -55,7 +59,15 @@ const App = () => {
           loading,
           setLoading,
           newMsg,
-          setNewMsg
+          setNewMsg,
+          reviewLength,
+          setReviewLength,
+          popAnim,
+          setPopAnim,
+          antispam,
+          setAntispam,
+          newHist,
+          setNewHist
         }}
       >
         <BrowserRouter>
