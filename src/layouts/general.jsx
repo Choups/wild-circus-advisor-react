@@ -53,21 +53,36 @@ const Layout = ({ children, child }) => {
         <Col
           sm={3}
           className={animation ? "scrollhide first-anim" : "scrollhide"}
-          style={{ maxHeight: "100vh", overflow: "auto", paddingTop: "80px" }}
+          style={{
+            minHeight: "100vh",
+            maxHeight: "100vh",
+            overflow: "auto",
+            paddingTop: "80px"
+          }}
         >
           <Sidebar />
         </Col>
         <Col
           sm={6}
           className={animation ? "scrollhide third-anim" : "scrollhide"}
-          style={{ maxHeight: "100vh", overflow: "auto", paddingTop: "80px" }}
+          style={{
+            minHeight: "100vh",
+            maxHeight: "100vh",
+            overflow: "auto",
+            paddingTop: "80px"
+          }}
         >
           {children}
         </Col>
         <Col
           sm={3}
           className={animation ? "scrollhide second-anim" : "scrollhide"}
-          style={{ maxHeight: "100vh", overflow: "auto", paddingTop: "80px" }}
+          style={{
+            minHeight: "100vh",
+            maxHeight: "100vh",
+            overflow: "auto",
+            paddingTop: "80px"
+          }}
         >
           <Chat />
         </Col>

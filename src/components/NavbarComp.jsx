@@ -100,9 +100,24 @@ const NavbarComp = () => {
               )}
             </Nav.Link>
           </Nav>
-          <AiOutlineInstagram className="social" />
-          <AiOutlineGithub className="social" />
-          <AiOutlineFacebook className="social" />
+          <a
+            href="https://www.instagram.com/wildcodeschoolofficial/"
+            target="blank"
+            rel="external"
+          >
+            <AiOutlineInstagram className="social" />
+          </a>
+
+          <a href="https://github.com/Choups" target="blank" rel="external">
+            <AiOutlineGithub className="social" />
+          </a>
+          <a
+            href="https://www.facebook.com/WildCodeSchool/"
+            target="blank"
+            rel="external"
+          >
+            <AiOutlineFacebook className="social" />
+          </a>
           <Dropdown>
             <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
               Bonjour {who.firstname}

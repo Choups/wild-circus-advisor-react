@@ -1,10 +1,9 @@
 import React, { useEffect, useContext, useState } from "react";
 import Container from "react-bootstrap/Container";
-import Table from "react-bootstrap/Table";
 import Layout from "../layouts/general";
 import axios from "axios";
 import Context from "../context/";
-import Card from "react-bootstrap/Card"
+import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import { Link } from "react-router-dom";
@@ -21,14 +20,13 @@ const Reviews = () => {
     // Make a request for a user with a given ID
     axios
       .get(`/api/history/all/${circusSelected}`)
-      .then(function (response) {
+      .then(function(response) {
         // handle success
         if (response.data[0].date) {
-
           setDataList(response.data);
         }
       })
-      .catch(function (error) {
+      .catch(function(error) {
         // handle error
         console.log(error);
       });
@@ -37,8 +35,6 @@ const Reviews = () => {
   }, [connectedUser]);
 
   if (dataList && circusList && circusSelected) {
-
-
     const MakeSomeStars = index => {
       switch (dataList[index].note) {
         case "5":
@@ -93,7 +89,6 @@ const Reviews = () => {
       }
     };
 
-
     return (
       <Layout>
         <Container fluid>
@@ -101,7 +96,7 @@ const Reviews = () => {
             style={{
               backgroundImage: `url(${
                 circusList.filter(el => el.idcircus === circusSelected)[0].image
-                })`,
+              })`,
               padding: "0",
               backgroundPosition: "center",
               backgroundSize: "cover",
@@ -134,9 +129,7 @@ const Reviews = () => {
           </Jumbotron>
 
           {dataList.map((review, index) => (
-
             <Card.Body className="reviewcard" key={index}>
-
               <blockquote className="blockquote mb-0">
                 <p>{review.review}</p>
                 <footer className="blockquote-footer review">
@@ -153,10 +146,24 @@ const Reviews = () => {
           ))}
 
           <Link to="/dashboard">
-            <Button variant="outline-warning" style={{ marginBottom: "20px", marginTop: "20px", marginRight: "20px" }}>Retour</Button>
+            <Button
+              variant="outline-warning"
+              style={{
+                marginBottom: "20px",
+                marginTop: "20px",
+                marginRight: "20px"
+              }}
+            >
+              Retour
+            </Button>
           </Link>
           <Link to="/circus">
-            <Button variant="primary" style={{ marginBottom: "20px", marginTop: "20px" }}>Réserver</Button>
+            <Button
+              variant="primary"
+              style={{ marginBottom: "20px", marginTop: "20px" }}
+            >
+              Réserver
+            </Button>
           </Link>
         </Container>
       </Layout>
@@ -169,7 +176,7 @@ const Reviews = () => {
             style={{
               backgroundImage: `url(${
                 circusList.filter(el => el.idcircus === circusSelected)[0].image
-                })`,
+              })`,
               padding: "0",
               backgroundPosition: "center",
               backgroundSize: "cover",
@@ -204,18 +211,24 @@ const Reviews = () => {
           <p>Aucun avis</p>
 
           <Link to="/dashboard">
-            <Button variant="outline-warning" style={{ marginBottom: "20px", marginRight: "20px" }}>Retour</Button>
+            <Button
+              variant="outline-warning"
+              style={{ marginBottom: "20px", marginRight: "20px" }}
+            >
+              Retour
+            </Button>
           </Link>
           <Link to="/circus">
-            <Button variant="primary" style={{ marginBottom: "20px", }}>Réserver</Button>
+            <Button variant="primary" style={{ marginBottom: "20px" }}>
+              Réserver
+            </Button>
           </Link>
         </Container>
       </Layout>
     );
   } else {
-    return <Layout></Layout>
+    return <Layout></Layout>;
   }
-}
-
+};
 
 export default Reviews;
