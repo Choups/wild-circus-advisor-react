@@ -14,7 +14,9 @@ const Login = props => {
   });
   const { setAnimation } = useContext(Context);
 
-  const forceConnect = () => {
+  const forceConnect = (e) => {
+    e.preventDefault();
+
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/user/signin`, {
         email: "invite@gmail.com",
