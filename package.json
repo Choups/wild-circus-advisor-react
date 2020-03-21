@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "prettier": "prettier-config-standard",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -40,5 +41,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3000/"
+  "proxy": "http://localhost:3000/",
+  "devDependencies": {
+    "prettier-config-standard": "^1.0.1"
+  }
 }

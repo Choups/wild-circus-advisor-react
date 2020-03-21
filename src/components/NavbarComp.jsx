@@ -123,7 +123,12 @@ const NavbarComp = () => {
               Bonjour {who.firstname}
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item href=" /">Déconnexion</Dropdown.Item>
+              <Dropdown.Item
+                href="/"
+                onClick={() => localStorage.removeItem("token")}
+              >
+                Déconnexion
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </Navbar.Collapse>

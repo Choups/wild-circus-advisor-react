@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./custom.scss";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
-import ParticlesBg from "particles-bg";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './custom.scss';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+import ParticlesBg from 'particles-bg';
 
 ReactDOM.render(
   <div>
@@ -13,10 +13,10 @@ ReactDOM.render(
       num={200}
       type="circle"
       bg={true}
-      style={{ maxHeight: "100vh" }}
+      style={{ maxHeight: '100vh' }}
     />
   </div>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

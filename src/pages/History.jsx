@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import Container from "react-bootstrap/Container";
-import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
-import Layout from "../layouts/general";
-import Context from "../context";
-import Form from "react-bootstrap/Form";
-import Image from "react-bootstrap/Image";
+import React, { useContext, useEffect, useState } from 'react';
+import Container from 'react-bootstrap/Container';
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+import Layout from '../layouts/general';
+import Context from '../context';
+import Form from 'react-bootstrap/Form';
+import Image from 'react-bootstrap/Image';
 
-import axios from "axios";
+import axios from 'axios';
 
 const History = () => {
   const { connectedUser, history, reload, setReload, setHistory } = useContext(
@@ -15,7 +15,7 @@ const History = () => {
   );
   const [newReview, setNewReview] = useState();
 
-  const [newNote, setNewNote] = useState("5");
+  const [newNote, setNewNote] = useState('5');
 
   //FETCH ALL CIRCUS
   useEffect(() => {
@@ -56,7 +56,7 @@ const History = () => {
           <Table className="text-white" hover responsive>
             <thead>
               <tr>
-                <th style={{ width: "20%" }}>Cirque</th>
+                <th style={{ width: '20%' }}>Cirque</th>
                 <th>Nom</th>
                 <th>Date</th>
                 <th>Ville</th>
@@ -70,12 +70,12 @@ const History = () => {
                   <td>
                     <Image
                       fluid
-                      className={product.review ? "" : "fullopacity"}
+                      className={product.review ? '' : 'fullopacity'}
                       src={product.image}
                       alt={product.name}
                       style={{
-                        border: "1px white dotted",
-                        borderRadius: "10px"
+                        border: '1px white dotted',
+                        borderRadius: '10px'
                       }}
                     ></Image>
                   </td>
@@ -102,9 +102,9 @@ const History = () => {
                           placeholder="Ajouter un avis"
                           onChange={e => setNewReview(e.target.value)}
                           style={{
-                            marginBottom: "5px",
-                            backgroundColor: "rgba(0,0,0,0.2)",
-                            color: "white"
+                            marginBottom: '5px',
+                            backgroundColor: 'rgba(0,0,0,0.2)',
+                            color: 'white'
                           }}
                         />
 
@@ -115,10 +115,10 @@ const History = () => {
                           as="select"
                           onChange={e => setNewNote(e.target.value[0])}
                           style={{
-                            display: "inline-block",
-                            width: "auto",
-                            backgroundColor: "rgba(0,0,0,0.2)",
-                            color: "white"
+                            display: 'inline-block',
+                            width: 'auto',
+                            backgroundColor: 'rgba(0,0,0,0.2)',
+                            color: 'white'
                           }}
                         >
                           <option>5 - Excellent</option>
