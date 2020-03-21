@@ -26,7 +26,7 @@ const NavbarComp = () => {
   useEffect(() => {
     // Make a request for a user with a given ID
     axios
-      .get(`/api/user/${connectedUser}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/user/${connectedUser}`)
       .then(function(response) {
         // handle success
         setWho(response.data[0]);

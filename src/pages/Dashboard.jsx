@@ -16,7 +16,7 @@ const Dashboard = () => {
   useEffect(() => {
     // Make a request for a user with a given ID
     axios
-      .get("/api/circus")
+      .get(`${process.env.REACT_APP_API_URL}/api/circus`)
       .then(function (response) {
         // handle success
         setCircusList(response.data);

@@ -21,7 +21,7 @@ const Cart = () => {
     const buy = () => {
       arrayOfProducts.forEach(product =>
         axios
-          .post("/api/history/new", {
+          .post(`${process.env.REACT_APP_API_URL}/api/history/new`, {
             event_idevent: product.idevent,
             quantity: product.quantity,
             user_iduser: connectedUser

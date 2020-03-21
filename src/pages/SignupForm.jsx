@@ -24,7 +24,7 @@ const SignupForm = props => {
 
   const submitForm = e => {
     e.preventDefault();
-    fetch("/api/user/new", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/user/new`, {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json"

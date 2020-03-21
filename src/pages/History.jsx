@@ -21,7 +21,7 @@ const History = () => {
   useEffect(() => {
     // Make a request for a user with a given ID
     axios
-      .get(`/api/history/${connectedUser}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/history/${connectedUser}`)
       .then(function(response) {
         // handle success
         setHistory(response.data);
@@ -38,7 +38,7 @@ const History = () => {
     console.log(e.target.id);
 
     axios
-      .put(`/api/history/${connectedUser}/${e.target.id}`, {
+      .put(`${process.env.REACT_APP_API_URL}/api/history/${connectedUser}/${e.target.id}`, {
         review: newReview,
         note: newNote
       })

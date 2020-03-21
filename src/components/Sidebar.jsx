@@ -14,7 +14,7 @@ const Sidebar = () => {
   //FETCH REVIEWS FROM SELECTED CIRCUS
   useEffect(() => {
     axios
-      .get(`/api/reviews`)
+      .get(`${process.env.REACT_APP_API_URL}/api/reviews`)
       .then(function (response) {
         // handle success
         setDataList(response.data);

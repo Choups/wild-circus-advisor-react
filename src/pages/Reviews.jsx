@@ -19,7 +19,7 @@ const Reviews = () => {
   useEffect(() => {
     // Make a request for a user with a given ID
     axios
-      .get(`/api/history/all/${circusSelected}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/history/all/${circusSelected}`)
       .then(function(response) {
         // handle success
         if (response.data[0].date) {

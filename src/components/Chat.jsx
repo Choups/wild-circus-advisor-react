@@ -28,7 +28,7 @@ const Chat = () => {
   //FETCH REVIEWS FROM SELECTED CIRCUS
   useEffect(() => {
     axios
-      .get(`/api/chat`)
+      .get(`${process.env.REACT_APP_API_URL}/api/chat`)
       .then(function(response) {
         // handle success
         setChat(response.data);
@@ -54,7 +54,7 @@ const Chat = () => {
     if (newMsg !== '') {
       setLoading(true);
       axios
-        .post('/api/chat', {
+        .post(`${process.env.REACT_APP_API_URL}/api/chat`, {
           name: who.firstname,
           message: newMsg
         })

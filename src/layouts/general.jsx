@@ -18,7 +18,7 @@ const Layout = ({ children, child }) => {
   } = React.useContext(Context);
 
   useEffect(() => {
-    fetch("api/user/verify", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/user/verify`, {
       method: "POST",
       headers: new Headers({
         Authorization: "Bearer " + localStorage.getItem("token")

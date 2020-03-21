@@ -19,7 +19,7 @@ const Circus = () => {
     // Make a request for a user with a given ID
     if (circusSelected) {
       axios
-        .get(`/api/event/${circusSelected}`)
+        .get(`${process.env.REACT_APP_API_URL}/api/event/${circusSelected}`)
         .then(function (response) {
           // handle success
           if (response.data[0].date) {
