@@ -14,6 +14,23 @@ const Login = props => {
   });
   const { setAnimation } = useContext(Context);
 
+  const forceConnect = () => {
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/user/signin`, {
+        email: "invite@gmail.com",
+        password: "123456"
+      })
+      .then(res => res.data)
+      .then(data => localStorage.setItem("token", data))
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        setAnimation(true);
+        props.history.push("/dashboard");
+      });
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -64,6 +81,9 @@ const Login = props => {
           <Button variant="primary" type="submit">
             Se connecter
           </Button>
+          <hr/>
+          <Button variant="secondary" onClick={forceConnect}>Utiliser le compte invité</Button>
+          <hr/>
           <Link to="/signup">
             <p>Pas de compte ? C'est par ici</p>
           </Link>
