@@ -12,11 +12,14 @@ const Login = props => {
     email: "test@test.com",
     password: 12345
   });
+  const [buttonText1, setButtonText1] = useState("Se connecter");
+  const [buttonText2, setButtonText2] = useState("Utiliser le compte invité");
+
   const { setAnimation } = useContext(Context);
 
   const forceConnect = (e) => {
     e.preventDefault();
-
+    setButtonText2("Connexion en cours...")
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/user/signin`, {
         email: "invite@gmail.com",
@@ -35,7 +38,7 @@ const Login = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    setButtonText1("Connexion en cours...")
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/user/signin`, {
         email: login.email,
@@ -81,10 +84,10 @@ const Login = props => {
           </Form.Group>
 
           <Button variant="primary" type="submit">
-            Se connecter
+            {buttonText1}
           </Button>
           <hr/>
-          <Button variant="secondary" onClick={forceConnect}>Utiliser le compte invité</Button>
+          <Button variant="secondary" onClick={forceConnect}>{buttonText2}</Button>
           <hr/>
           <Link to="/signup">
             <p>Pas de compte ? C'est par ici</p>
